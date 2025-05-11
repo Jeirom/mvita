@@ -1,3 +1,4 @@
+from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet
 
 from mvita_main.models import (

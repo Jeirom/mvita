@@ -63,8 +63,9 @@ class Services(models.Model):
     """
     Модель для хранения информации о медицинских услугах.
     """
+    name = models.CharField(max_length=255, verbose_name='Название услуги', blank=True, null=True)
+    description = models.CharField(max_length=255, verbose_name='Описание услуги', blank=True, null=True)
 
-    pass
 
 
 class Information(models.Model):
@@ -82,6 +83,7 @@ class Information(models.Model):
     address = models.CharField(
         max_length=255, verbose_name="Адрес клиники", null=True, blank=True
     )
+    information = models.CharField(max_length=255, verbose_name='Главная информация', blank=True, null=True)
 
 
 class Record(models.Model):
