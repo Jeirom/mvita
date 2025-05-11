@@ -20,14 +20,14 @@ class User(AbstractUser):
         null=True,
         verbose_name="Номер телефона",
     )
-    city = models.CharField(
-        max_length=50, blank=True, null=True, verbose_name="Город"
-    )
+    city = models.CharField(max_length=50, blank=True, null=True, verbose_name="Город")
     token = models.CharField(
         max_length=150, verbose_name="Токен", blank=True, null=True
     )
     is_active = models.BooleanField(blank=True, null=True)
-    tg_id = models.CharField(max_length=255, blank=True, null=True, verbose_name="Telegram ID")
+    tg_id = models.CharField(
+        max_length=255, blank=True, null=True, verbose_name="Telegram ID"
+    )
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
