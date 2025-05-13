@@ -81,14 +81,19 @@
   </div>
 </nav>
 
+<!-- Начало блока контента -->
+{% block content %}
+<!-- Здесь будет вставляться уникальный контент страниц -->
+{% endblock %}
 
-
+<!-- Весь остальной код, который идет после строки 216 -->
+<!-- Например, подвал сайта -->
 <footer class="text-center">
   <div class="container">
     <div class="row justify-content-center mb-3">
-      <a href="{% url 'mvita:services' %}" class="text-decoration-none fs-5 fw-bold">Карта проезда</a>
-      <a href="{% url 'mvita:services' %}" class="text-decoration-none fs-5 fw-bold">Обратная связь</a>
-      <a href="{% url 'mvita:services' %}" class="text-decoration-none fs-5 fw-bold">Наши врачи</a>
+      <button class="btn btn-custom mx-2">О нас</button>
+      <button class="btn btn-custom mx-2">Обратная связь</button>
+      <button class="btn btn-custom mx-2">Наши врачи</button>
       <!-- добавьте другие кнопки по необходимости -->
     </div>
     <p class="mb-0">&copy; 2025 M-Vita. Все права защищены.</p>

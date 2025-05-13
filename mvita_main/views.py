@@ -92,7 +92,7 @@ class ReviewsDeleteView(DeleteView):
 
 class ServicesDeleteView(DeleteView):
     model = Services
-    template_name = "services_delete.html"
+    template_name = "../templates/services/delete_form.html"
     success_url = reverse_lazy("mvita:services_form")
 
 
@@ -100,7 +100,7 @@ class ServicesListView(ListView):
     model = Services
     template_name = "services_form.html"
     context_object_name = "services"
-
+    template_name = "../templates/services/services_form.html"
 
 class ServicesCreateView(CreateView):
     model = Services
@@ -124,7 +124,7 @@ class ServicesDetailView(DetailView):
 
 class InformationListView(ListView):
     model = Information
-    template_name = "information_form.html"
+    template_name = "../templates/information/information_form.html"
     success_url = reverse_lazy("mvita:information_form")
     context_object_name = "info"
 

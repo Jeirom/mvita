@@ -1,10 +1,154 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <title>Title</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>M-Vita - Медицинская диагностика</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+      /* Эффект затухания для элементов списка услуг */
+      #servicesList .list-group-item:nth-last-child(1) {
+        opacity: 0.2;
+      }
+      #servicesList .list-group-item:nth-last-child(2) {
+        opacity: 0.4;
+      }
+      #servicesList .list-group-item:nth-last-child(3) {
+        opacity: 0.6;
+      }
+      #servicesList .list-group-item:nth-last-child(4) {
+        opacity: 0.8;
+      }
+      /* Можно добавить больше элементов с меньшей прозрачностью по мере необходимости */
+
+        /* Общие стили в медицинском стиле */
+        body {
+            background-color: #f5f0e6; /* светлый бежевый фон */
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        /* Шапка */
+        .navbar {
+            background-color: #e6d3b3; /* светло-коричневый/бежевый */
+        }
+        /* Подвал */
+        footer {
+            background-color: #e6d3b3;
+            padding: 20px 0;
+        }
+        /* Цвет для кнопок и ссылок */
+        .btn-custom {
+            background-color: #d2b48c; /* светло-коричневый */
+            color: #fff;
+        }
+        .btn-custom:hover {
+            background-color: #c19a6b;
+        }
+        /* Выдвижное меню пользователя */
+        .dropdown-menu {
+            min-width: 150px;
+        }
+    </style>
 </head>
 <body>
 
+<!-- Шапка сайта -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">M-Vita</a>
+    <!-- Кнопки навигации -->
+    <div class="d-flex align-items-center ms-auto">
+      <!-- Кнопки "Услуги", "Контакты", "Мои результаты" -->
+      <a class="nav-link text-dark mx-2" href="#">Контакты</a>
+      <a class="nav-link text-dark mx-2" href="#">Мои результаты</a>
+
+      <!-- Выдвижное меню пользователя -->
+      <div class="dropdown ms-3">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+          Пользователь
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+          <li><a class="dropdown-item" href="#">Вход</a></li>
+          <li><a class="dropdown-item" href="#">Регистрация</a></li>
+          <li><a class="dropdown-item" href="#">Профиль</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Выход</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+
+
+<div class="container my-5">
+  <h2 class="text-center mb-4">Наши услуги</h2>
+  <div class="services-container">
+    <!-- Услуга 1 -->
+    <div class="card service-card">
+      <div class="card-body">
+        <h5 class="card-title">Общий анализ крови</h5>
+        <p class="card-text">Быстрый и точный анализ для оценки общего состояния организма.</p>
+        <p class="fw-bold">Цена: 500 руб.</p>
+      </div>
+    </div>
+    <!-- Услуга 2 -->
+    <div class="card service-card">
+      <div class="card-body">
+        <h5 class="card-title">Ультразвуковое исследование</h5>
+        <p class="card-text">Безопасное исследование внутренних органов и тканей.</p>
+        <p class="fw-bold">Цена: 1500 руб.</p>
+      </div>
+    </div>
+    <!-- Услуга 3 -->
+    <div class="card service-card">
+      <div class="card-body">
+        <h5 class="card-title">ЭКГ</h5>
+        <p class="card-text">Диагностика сердечно-сосудистой системы.</p>
+        <p class="fw-bold">Цена: 800 руб.</p>
+      </div>
+    </div>
+    <!-- Услуга 4 -->
+    <div class="card service-card">
+      <div class="card-body">
+        <h5 class="card-title">Флюорография</h5>
+        <p class="card-text">Обследование легких для выявления заболеваний.</p>
+        <p class="fw-bold">Цена: 1200 руб.</p>
+      </div>
+    </div>
+    <!-- Услуга 5 -->
+    <div class="card service-card">
+      <div class="card-body">
+        <h5 class="card-title">Маммография</h5>
+        <p class="card-text">Обследование молочных желез для ранней диагностики.</p>
+        <p class="fw-bold">Цена: 2000 руб.</p>
+      </div>
+    </div>
+    <!-- Добавляйте дополнительные услуги по необходимости -->
+  </div>
+</div>
+
+<!-- Bootstrap JS (опционально, если нужны интерактивные компоненты) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+<!-- Подвал сайта -->
+<footer class="text-center">
+  <div class="container">
+    <div class="row justify-content-center mb-3">
+      <button class="btn btn-custom mx-2">О нас</button>
+      <button class="btn btn-custom mx-2">Обратная связь</button>
+      <button class="btn btn-custom mx-2">Наши врачи</button>
+      <button class="btn btn-custom mx-2">Новости</button>
+    </div>
+    <p class="mb-0">&copy; 2025 M-Vita. Все права защищены.</p>
+  </div>
+</footer>
+
+<!-- Подключение Bootstrap JS -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

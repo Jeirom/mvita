@@ -1,75 +1,204 @@
-{% extends 'base.html' %}
-{% block title %}Вход{% endblock %}
-{% block content %}
-
-    <!DOCTYPE html>
-    <html lang="ru">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Главная страница</title>
-        <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-        <style>
-            /* Общие стили */
-            .description-box {
-                border: 2px solid #000; /* полоска вокруг описания */
-                padding: 15px;
-                height: 100%;
-            }
-            .services-list {
-                width: 100%;
-                max-width: 100%;
-            }
-            .service-item {
-                width: 100%;
-                padding: 10px;
-                border-bottom: 1px solid #ccc;
-                word-wrap: break-word;
-            }
-            /* Для адаптивности */
-            @media (max-width: 768px) {
-                .row {
-                    flex-direction: column;
-                }
-                .description-column, .contacts-column {
-                    max-width: 100%;
-                }
-            }
-        </style>
-    </head>
-    <body>
-    <div class="container my-4">
-        <!-- Раздел с описанием компании и контактами -->
-        <div class="row mb-4">
-            <!-- Описание компании -->
-            <div class="col-md-8 description-box">
-                <h2>Описание компании</h2>
-                <p>{{ Information.Information }}</p>
-            </div>
-            <!-- Контактная информация -->
-            <div class="col-md-4">
-                <h3>Контактная информация</h3>
-                {% for service in services %}
-                    <div class="info-item">
-                        {{ info.address }}
-            </div>
-        {% endfor %}
-            </div>
-
-        <!-- Перечень предоставляемых услуг -->
-        <h2 class="mb-3">Наши услуги</h2>
-            <div class="services-list">
-                {% for service in services %}
-                    <div class="service-item">
-                        {{ service.name }}
-        </div>
-    {% endfor %}
-</div>
-
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>M-Vita - Медицинская диагностика</title>
+    <!-- Подключение Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        /* Весь ваш CSS, который был в начале, до строки 102 */
+        .custom-button {
+            display: inline-block;
+            padding: 8px 12px;
+            background-color: transparent;
+            color: black;
+            font-weight: bold;
+            font-size: 14px;
+            border: none;
+            text-decoration: none;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        .custom-button:hover {
+            text-decoration: underline;
+        }
+        /* Эффект затухания для элементов списка услуг */
+        #servicesList .list-group-item:nth-last-child(1) { opacity: 0.2; }
+        #servicesList .list-group-item:nth-last-child(2) { opacity: 0.4; }
+        #servicesList .list-group-item:nth-last-child(3) { opacity: 0.6; }
+        #servicesList .list-group-item:nth-last-child(4) { opacity: 0.8; }
+        /* Общие стили в медицинском стиле */
+        body {
+            background-color: #f5f0e6;
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        }
+        /* Шапка */
+        .navbar {
+            background-color: #e6d3b3;
+        }
+        /* Подвал */
+        footer {
+            background-color: #e6d3b3;
+            padding: 20px 0;
+        }
+        /* Цвет для кнопок и ссылок */
+        .btn-custom {
+            background-color: #d2b48c;
+            color: #fff;
+        }
+        .btn-custom:hover {
+            background-color: #c19a6b;
+        }
+        /* Выдвижное меню пользователя */
+        .dropdown-menu {
+            min-width: 150px;
+        }
+    </style>
+</head>
+<body>
+<!-- Шапка сайта -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">M-Vita</a>
+    <div class="d-flex align-items-center ms-auto">
+      <a href="{% url 'mvita:services' %}" class="custom-button">Услуги</a>
+      <a href="{% url 'mvita:services' %}" class="custom-button">Мои результаты</a>
+      <a href="{% url 'mvita:services' %}" class="custom-button">Контакты</a>
+      <div class="dropdown ms-3">
+        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
+          Пользователь
+        </button>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
+          <li><a class="dropdown-item" href="#">Вход</a></li>
+          <li><a class="dropdown-item" href="#">Регистрация</a></li>
+          <li><a class="dropdown-item" href="#">Профиль</a></li>
+          <li><hr class="dropdown-divider"></li>
+          <li><a class="dropdown-item" href="#">Выход</a></li>
+        </ul>
+      </div>
     </div>
-    </body>
-    </html>
+  </div>
+</nav>
 
+<div class="container my-4">
+  <div class="row">
+      <h2>Наши врачи</h2>
+    <!-- Слайд-шоу докторов (6 колонок) -->
+    <div class="col-md-6">
+      <div id="doctorCarousel" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <!-- Первый слайд -->
+          <div class="carousel-item active">
+            <div class="card" style="width: 100%; cursor: pointer;" onclick="window.location.href='#'">
+              <img src="images/7a1d368b6f90b4973cd9d28104ec3617.jpg" alt="Рыжий кот Кекс лежит у ноутбука." width="520" height="683">
+              <div class="card-body text-center">
+                <h5 class="card-title mb-1">Иван Иванов</h5>
+                <p class="card-text mb-0">Терапевт</p>
+              </div>
+            </div>
+          </div>
+          <!-- Второй слайд -->
+          <div class="carousel-item">
+            <div class="card" style="width: 100%; cursor: pointer;" onclick="window.location.href='#'">
+              <img src="https://via.placeholder.com/150" class="card-img-top" alt="Доктор 2">
+              <div class="card-body text-center">
+                <h5 class="card-title mb-1">Мария Петрова</h5>
+                <p class="card-text mb-0">Кардиолог</p>
+              </div>
+            </div>
+          </div>
+          <!-- Добавьте дополнительные слайды по необходимости -->
+        </div>
+        <!-- Навигация -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#doctorCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Предыдущий</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#doctorCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Следующий</span>
+        </button>
+      </div>
+    </div>
+      <!-- Пустая колонка для пробела (1 колонка) -->
+    <div class="col-md-5 d-flex flex-column align-items-center">
+      <h5>Наши услуги</h5>
+      <ul class="list-group mb-3" id="servicesList" style="width: 100%; max-width: 300px;">
+        <li class="list-group-item">Общий анализ крови</li>
+        <li class="list-group-item">Ультразвуковое исследование</li>
+        <li class="list-group-item">ЭКГ</li>
+        <li class="list-group-item">Флюорография</li>
+        <li class="list-group-item">Маммография</li>
+      </ul>
+      <!-- Центрированная полоска с "смотреть всё.." -->
+      <div class="d-flex justify-content-center w-100">
+        <a href="{% url 'mvita:services' %}" class="text-decoration-none fs-5 fw-bold">смотреть всё..</a>
+    </div>
+  </div>
+</div>
+<!-- Информация о нас в левой части экрана -->
+<div class="container my-4">
+    <div class="row">
+        <!-- Блок с информацией -->
+        <div class="col-md-8">
+            <div class="border p-3" style="background-color: #f5f5dc; border-radius: 5px;">
+                <h5>Немного об "M-Vita"</h5>
+                <form>
+                    <!-- Статический адрес -->
+                    <div class="mb-3">
 
-{% endblock %}
+                        <h3 style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 24px; font-weight: 400;">
+                            Добро пожаловать в M-Vita — молодую, динамично развивающуюся компанию в сфере медицинской диагностики. Мы недавно вышли на рынок, но уже успели зарекомендовать себя как надежный партнер для пациентов и медицинских учреждений. Наша миссия — предоставлять высококачественные и точные диагностические услуги, используя современные технологии и инновационные методы исследования. В M-Vita мы ценим каждого клиента и стремимся обеспечить максимально комфортное и быстрое обслуживание. За короткое время работы мы достигли достойных результатов, расширили спектр услуг и завоевали доверие наших партнеров. Наши специалисты — это команда профессионалов, постоянно совершенствующих свои знания и навыки, чтобы обеспечить вам лучший сервис. Мы гордимся тем, что уже сегодня делаем важный вклад в здоровье и благополучие наших клиентов, и продолжаем развиваться, чтобы стать лидером в сфере медицинской диагностики.
+                        </h3>
+
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <!-- Контактные данные -->
+        <div class="col-md-4">
+            <div class="border p-3" style="background-color: #f5f5dc; border-radius: 5px;">
+                <h5>Контактные данные</h5>
+                <form>
+                    <!-- Статический адрес -->
+                    <div class="mb-3">
+                        <label class="form-label">Адрес</label>
+                        <h3 style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 24px; font-weight: 400;">
+                             г.Тюмень, ул. Малыгина, 44 (1 этаж)
+                        </h3>
+
+                        <h3 style="font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 24px; font-weight: 400;">
+                            г.Тюмень, ул. Федюниского, 3 (Будет открыт в августе)
+                        </h3>
+
+                    </div>
+                    <!-- Статический номер телефона -->
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Номера телефонов</label>
+                        <input type="text" class="form-control" id="phone" value="+7 (495) 123-45-67, (3452) 901-109" readonly>
+                    </div>
+                    <!-- Кнопка "Заказать звонок" -->
+                    <button type="submit" class="btn btn-light">Заказать звонок</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="text-center">
+  <div class="container">
+    <div class="row justify-content-center mb-3">
+      <a href="{% url 'mvita:services' %}" class="text-decoration-none fs-5 fw-bold">Карта проезда</a>
+      <a href="{% url 'mvita:services' %}" class="text-decoration-none fs-5 fw-bold">Обратная связь</a>
+      <a href="{% url 'mvita:services' %}" class="text-decoration-none fs-5 fw-bold">Наши врачи</a>
+      <!-- добавьте другие кнопки по необходимости -->
+    </div>
+    <p class="mb-0">&copy; 2025 M-Vita. Все права защищены.</p>
+  </div>
+</footer>
+
+<!-- Скрипты Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
