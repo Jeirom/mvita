@@ -12,7 +12,7 @@ from mvita_main.views import *
 app_name = MvitaMainConfig.name
 
 urlpatterns = [
-    path("doctors/", DoctorsListView.as_view()),
+    path("doctors/", DoctorsListView.as_view(), name="doctors"),
     path("<int:pk>/", DoctorsDetailView.as_view(), name="doctors_detail"),
     path("new/", DoctorsCreateView.as_view(), name="doctors_create"),
     path("<int:pk>/edit/", DoctorsUpdateView.as_view(), name="doctors_edit"),

@@ -23,32 +23,32 @@ from mvita_main.models import (
 class DoctorsListView(ListView):
     model = Doctors
     fields = ["first_name", "last_name", "specialization"]
-    template_name = "doctors_form.html"
+    template_name = "../templates/doctors/doctors_form.html"
     context_object_name = "doctors"
 
 
 class DoctorsCreateView(CreateView):
     model = Doctors
-    template_name = "doctors_create.html"
+    template_name = "../templates/doctors/doctors_create.html"
     fields = ["first_name", "last_name", "specialization"]
     success_url = reverse_lazy("mvita:doctors_form")
 
 
 class DoctorsDetailView(DetailView):
     model = Doctors
-    template_name = "doctors_detail.html"
+    template_name = "../templates/doctors/doctors_detail.html"
     context_object_name = "doc"
 
 
 class DoctorsUpdateView(UpdateView):
     model = Doctors
-    template_name = "doctors_update.html"
+    template_name = "../templates/doctors/doctors_update.html"
     fields = ["first_name", "last_name", "specialization"]
 
 
 class DoctorsDeleteView(DeleteView):
     model = Doctors
-    template_name = "doctors_delete.html"
+    template_name = "../templates/doctors/doctors_delete.html"
     success_url = reverse_lazy("mvita:doctors_form")
 
 
@@ -58,7 +58,7 @@ class DoctorsDeleteView(DeleteView):
 class ReviewsListView(ListView):
     model = Reviews
     # fields = ['first_name', 'last_name', 'specialization']
-    template_name = "reviews_form.html"
+    template_name = "../templates/reviews/reviews_form.html"
     context_object_name = "reviews"
 
 

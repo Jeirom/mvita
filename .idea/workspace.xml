@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6fc6c37c-a3e6-48ad-b929-8a25b7c03d1e" name="Changes" comment="Добавил кастомную команду для создания экземпляра Information, провел изменения в base шаблоне. Добавил аунтефикацию в приложение, полностью реализовал весь функционал. Работает. Небольшие изменения в файлах. Сделаны еще изменения в моделях, миграции прикрепил">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/mvita.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvita_main/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/mvita_main/templates/base.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvita_main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mvita_main/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Jeirom&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Jeirom/mvita.git&quot;,
+    &quot;accountId&quot;: &quot;fca1856b-8e22-4878-bf05-2c07a8bc4e35&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2wtiAcYAjjY4uN4jQXVcTeG8WuB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "DefaultHtmlFileTemplate": "HTML File",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "feature",
+    "last_opened_file_path": "Z:/MyProjects/mvita/mvita_main"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="Z:\MyProjects\mvita\mvita_main" />
+      <recent name="Z:\MyProjects\mvita\users\templates" />
+      <recent name="Z:\MyProjects\mvita\users" />
+      <recent name="Z:\MyProjects\mvita" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-98f27166c754-ba05f1cad1b1-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-242.21829.153" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6fc6c37c-a3e6-48ad-b929-8a25b7c03d1e" name="Changes" comment="" />
+      <created>1746867128972</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1746867128972</updated>
+    </task>
+    <task id="LOCAL-00001" summary="Initialization of the project">
+      <option name="closed" value="true" />
+      <created>1746867431943</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1746867431943</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Installing libraries: psycopg2, Pillow, dotenv. A PostgreSQL database has been created and connected, the users application has been created, a model of the same name has been created, and migrations have been sent.">
+      <option name="closed" value="true" />
+      <created>1746868378284</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1746868378284</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Adding basic functionality and classes to the application.">
+      <option name="closed" value="true" />
+      <created>1746874624912</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1746874624912</updated>
+    </task>
+    <task id="LOCAL-00004" summary="The main classes for the application have been written. Possible changes">
+      <option name="closed" value="true" />
+      <created>1746876762464</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1746876762464</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Мvita_main added to settings, migrations created">
+      <option name="closed" value="true" />
+      <created>1746876885319</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1746876885319</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added views.py for the Doctors model. Added URLs for this class. + serializer. A custom super-user creation team has also been created.Additional packages and libraries are installed, recording is conducted in pyproject.toml">
+      <option name="closed" value="true" />
+      <created>1746877687263</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1746877687263</updated>
+    </task>
+    <task id="LOCAL-00007" summary="ModelViewSet has been written for all models. Serializers are written in the same way. The docstring is filled in, the code has been verified by flake8 and edited to comply with PEP8">
+      <option name="closed" value="true" />
+      <created>1746956180954</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1746956180954</updated>
+    </task>
+    <task id="LOCAL-00008" summary="The base template has been written. Fields have been added to the Services and Information models, and migrations have been made. Added rest_framework in settings.installed_apps">
+      <option name="closed" value="true" />
+      <created>1746959835160</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1746959835160</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Rewrote View's to the basic django framework. Empty templates for CRUD models have been created">
+      <option name="closed" value="true" />
+      <created>1746975661481</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1746975661481</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Create url's for all views's">
+      <option name="closed" value="true" />
+      <created>1746977366447</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1746977366447</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Далее по-русски. Сделал изменения в Information.information, изменил тип хранения с models.CharField на текстфилд. Это все изменения связанный с БД и за следующий коммит тоже">
+      <option name="closed" value="true" />
+      <created>1747126919459</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1747126919459</updated>
+    </task>
+    <task id="LOCAL-00012" summary="И отправил миграции.">
+      <option name="closed" value="true" />
+      <created>1747126960113</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1747126960113</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Добавил кастомную команду для создания экземпляра Information, провел изменения в base шаблоне. Добавил аунтефикацию в приложение, полностью реализовал весь функционал. Работает. Небольшие изменения в файлах. Сделаны еще изменения в моделях, миграции прикрепил">
+      <option name="closed" value="true" />
+      <created>1747129744212</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1747129744212</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initialization of the project" />
+    <MESSAGE value="Installing libraries: psycopg2, Pillow, dotenv. A PostgreSQL database has been created and connected, the users application has been created, a model of the same name has been created, and migrations have been sent." />
+    <MESSAGE value="Adding basic functionality and classes to the application." />
+    <MESSAGE value="The main classes for the application have been written. Possible changes" />
+    <MESSAGE value="Мvita_main added to settings, migrations created" />
+    <MESSAGE value="Added views.py for the Doctors model. Added URLs for this class. + serializer. A custom super-user creation team has also been created.Additional packages and libraries are installed, recording is conducted in pyproject.toml" />
+    <MESSAGE value="ModelViewSet has been written for all models. Serializers are written in the same way. The docstring is filled in, the code has been verified by flake8 and edited to comply with PEP8" />
+    <MESSAGE value="The base template has been written. Fields have been added to the Services and Information models, and migrations have been made. Added rest_framework in settings.installed_apps" />
+    <MESSAGE value="Rewrote View's to the basic django framework. Empty templates for CRUD models have been created" />
+    <MESSAGE value="Create url's for all views's" />
+    <MESSAGE value="Далее по-русски. Сделал изменения в Information.information, изменил тип хранения с models.CharField на текстфилд. Это все изменения связанный с БД и за следующий коммит тоже" />
+    <MESSAGE value="И отправил миграции." />
+    <MESSAGE value="Добавил кастомную команду для создания экземпляра Information, провел изменения в base шаблоне. Добавил аунтефикацию в приложение, полностью реализовал весь функционал. Работает. Небольшие изменения в файлах. Сделаны еще изменения в моделях, миграции прикрепил" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил кастомную команду для создания экземпляра Information, провел изменения в base шаблоне. Добавил аунтефикацию в приложение, полностью реализовал весь функционал. Работает. Небольшие изменения в файлах. Сделаны еще изменения в моделях, миграции прикрепил" />
+  </component>
+</project>

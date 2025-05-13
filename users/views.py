@@ -39,7 +39,7 @@ class UserCreateView(CreateView):
         user.save()
 
         host = self.request.get_host()
-        url = f"http://{host}/email-confirm/{token}/"
+        url = f"http://{host}/users/email-confirm/{token}/"
         send_mail(
             subject="Подтвердите email адрес",
             message=f"Для успешной регистрации на сайте подтвердите свой email адрес по ссылке {url}",
@@ -75,7 +75,7 @@ class CustomLoginView(LoginView):
     redirect_authenticated_user = (
         True  # Перенаправление, если пользователь уже авторизован
     )
-    success_url = reverse_lazy("users:home")
+    success_url = reverse_lazy("mvita:doctors")
 
     def form_valid(self, form) -> HttpResponse:
         """
@@ -94,7 +94,7 @@ class CustomLogoutView(LogoutView):
     """Контроллер для выхода пользователя."""
 
     template_name = "logout.html"
-    success_url = reverse_lazy("users:home")
+    success_url = reverse_lazy("mvita:doctors")
 
     def dispatch(self, request, *args, **kwargs) -> HttpResponse:
         """
