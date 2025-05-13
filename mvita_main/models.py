@@ -87,7 +87,7 @@ class Information(models.Model):
     address = models.CharField(
         max_length=255, verbose_name="Адрес клиники", null=True, blank=True
     )
-    information = models.CharField(
+    information = models.TextField(
         max_length=255, verbose_name="Главная информация", blank=True, null=True
     )
 
