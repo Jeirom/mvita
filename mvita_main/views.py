@@ -24,7 +24,7 @@ class DoctorsListView(ListView):
     model = Doctors
     fields = ["first_name", "last_name", "specialization"]
     template_name = "doctors_form.html"
-    context_object_name = "doc"
+    context_object_name = "doctors"
 
 
 class DoctorsCreateView(CreateView):

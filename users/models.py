@@ -28,6 +28,7 @@ class User(AbstractUser):
     tg_id = models.CharField(
         max_length=255, blank=True, null=True, verbose_name="Telegram ID"
     )
+    country = models.CharField(max_length=255, blank=True, null=True, verbose_name='Гражданство')
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
