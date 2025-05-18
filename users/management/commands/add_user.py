@@ -8,9 +8,9 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         # Пример добавления одного объекта
         my_instance = User(
-            email="test3@gmail.com",
+            email="test5@gmail.com",
             is_active=True,
-            password="1234qwertyu",
+            password="1234",
             tg_id="5152132161",
         )
         my_instance.save()

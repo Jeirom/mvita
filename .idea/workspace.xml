@@ -4,17 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6fc6c37c-a3e6-48ad-b929-8a25b7c03d1e" name="Changes" comment="Добавил кастомную команду для создания экземпляра Information, провел изменения в base шаблоне. Добавил аунтефикацию в приложение, полностью реализовал весь функционал. Работает. Небольшие изменения в файлах. Сделаны еще изменения в моделях, миграции прикрепил">
+    <list default="true" id="6fc6c37c-a3e6-48ad-b929-8a25b7c03d1e" name="Changes" comment="Долго не было коммита. Бился с шаблотами, base.html не получается сделать. Буду искать причину, но а пока написал два шаблона, третий в разработке. Главная страница host/mvita/doctors/">
       <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/.idea/mvita.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvita_main/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/mvita_main/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvita_main/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/mvita_main/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvita_main/templates/base.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvita_main/templates/doctors/doctors_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/mvita_main/templates/doctors/doctors_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvita_main/templates/information/information_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/mvita_main/templates/information/information_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mvita_main/templates/services/services_form.html" beforeDir="false" afterPath="$PROJECT_DIR$/mvita_main/templates/services/services_form.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/management/commands/add_user.py" beforeDir="false" afterPath="$PROJECT_DIR$/users/management/commands/add_user.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/templates/profile.html" beforeDir="false" afterPath="$PROJECT_DIR$/users/templates/profile.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,8 +26,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Python Script" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -58,20 +60,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "feature",
-    "last_opened_file_path": "Z:/MyProjects/mvita/mvita_main"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feature&quot;,
+    &quot;last_opened_file_path&quot;: &quot;Z:/MyProjects/mvita/mvita_main&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="Z:\MyProjects\mvita\mvita_main" />
       <recent name="Z:\MyProjects\mvita\users\templates" />
       <recent name="Z:\MyProjects\mvita\users" />
       <recent name="Z:\MyProjects\mvita" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="Z:\MyProjects\mvita\mvita_main\templates\doctors" />
     </key>
   </component>
   <component name="SharedIndexes">
@@ -194,7 +199,23 @@
       <option name="project" value="LOCAL" />
       <updated>1747129744212</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Шаблоны CRUD ALL MODELS сортированы по одноименным модели папкам и прочие мелкие изменения связанные с этим">
+      <option name="closed" value="true" />
+      <created>1747130716546</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1747130716546</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Долго не было коммита. Бился с шаблотами, base.html не получается сделать. Буду искать причину, но а пока написал два шаблона, третий в разработке. Главная страница host/mvita/doctors/">
+      <option name="closed" value="true" />
+      <created>1747152418867</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1747152418867</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -211,6 +232,8 @@
     <MESSAGE value="Далее по-русски. Сделал изменения в Information.information, изменил тип хранения с models.CharField на текстфилд. Это все изменения связанный с БД и за следующий коммит тоже" />
     <MESSAGE value="И отправил миграции." />
     <MESSAGE value="Добавил кастомную команду для создания экземпляра Information, провел изменения в base шаблоне. Добавил аунтефикацию в приложение, полностью реализовал весь функционал. Работает. Небольшие изменения в файлах. Сделаны еще изменения в моделях, миграции прикрепил" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил кастомную команду для создания экземпляра Information, провел изменения в base шаблоне. Добавил аунтефикацию в приложение, полностью реализовал весь функционал. Работает. Небольшие изменения в файлах. Сделаны еще изменения в моделях, миграции прикрепил" />
+    <MESSAGE value="Шаблоны CRUD ALL MODELS сортированы по одноименным модели папкам и прочие мелкие изменения связанные с этим" />
+    <MESSAGE value="Долго не было коммита. Бился с шаблотами, base.html не получается сделать. Буду искать причину, но а пока написал два шаблона, третий в разработке. Главная страница host/mvita/doctors/" />
+    <option name="LAST_COMMIT_MESSAGE" value="Долго не было коммита. Бился с шаблотами, base.html не получается сделать. Буду искать причину, но а пока написал два шаблона, третий в разработке. Главная страница host/mvita/doctors/" />
   </component>
 </project>

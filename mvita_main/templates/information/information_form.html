@@ -1,101 +1,347 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>M-Vita - Медицинская диагностика</title>
-    <!-- Подключение Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-    <style>
-        /* Весь ваш CSS, который был в начале, до строки 102 */
-        .custom-button {
-            display: inline-block;
-            padding: 8px 12px;
-            background-color: transparent;
-            color: black;
-            font-weight: bold;
-            font-size: 14px;
-            border: none;
-            text-decoration: none;
-            cursor: pointer;
-            margin-right: 10px;
-        }
-        .custom-button:hover {
-            text-decoration: underline;
-        }
-        /* Эффект затухания для элементов списка услуг */
-        #servicesList .list-group-item:nth-last-child(1) { opacity: 0.2; }
-        #servicesList .list-group-item:nth-last-child(2) { opacity: 0.4; }
-        #servicesList .list-group-item:nth-last-child(3) { opacity: 0.6; }
-        #servicesList .list-group-item:nth-last-child(4) { opacity: 0.8; }
-        /* Общие стили в медицинском стиле */
-        body {
-            background-color: #f5f0e6;
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        }
-        /* Шапка */
-        .navbar {
-            background-color: #e6d3b3;
-        }
-        /* Подвал */
-        footer {
-            background-color: #e6d3b3;
-            padding: 20px 0;
-        }
-        /* Цвет для кнопок и ссылок */
-        .btn-custom {
-            background-color: #d2b48c;
-            color: #fff;
-        }
-        .btn-custom:hover {
-            background-color: #c19a6b;
-        }
-        /* Выдвижное меню пользователя */
-        .dropdown-menu {
-            min-width: 150px;
-        }
-    </style>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Медицинская Диагностическая Компания</title>
+<!-- Подключение шрифтов и стилей -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  /* Общие стили */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f9fd;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  /* Шапка */
+  header {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: #fff;
+    padding: 60px 20px;
+    text-align: center;
+  }
+
+  header h1 {
+    font-size: 3em;
+    margin-bottom: 20px;
+  }
+
+  header p {
+    font-size: 1.2em;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  /* Разделы */
+section {
+  padding: 60px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+section:nth-of-type(even) {
+  background-color: #ffffff;
+}
+
+section:nth-of-type(odd) {
+  background-color: #f4f9fd;
+}
+
+/* Заголовки разделов */
+section h2 {
+  font-size: 2.5em;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #2c3e50;
+}
+
+/* О компании */
+.about {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+}
+
+.about img {
+  flex: 1 1 45%;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+.about div {
+  flex: 1 1 45%;
+}
+
+.about p {
+  font-size: 1.1em;
+  line-height: 1.8;
+}
+
+/* Услуги */
+.services {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 30px;
+}
+
+.service-card {
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  flex: 1 1 250px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.service-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+.service-card h3 {
+  margin-bottom: 15px;
+  color: #2980b9;
+}
+
+.service-card p {
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+/* Преимущества */
+.advantages {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  gap: 30px;
+  text-align: center;
+}
+
+.advantage {
+  flex: 1 1 200px;
+  padding: 20px;
+}
+
+.advantage h3 {
+  font-size: 1.5em;
+  margin-bottom: 15px;
+  color: #27ae60;
+}
+
+.advantage p {
+  font-size: 1em;
+  line-height: 1.5;
+}
+
+/* Команда */
+.team {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.member {
+  background-color: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+
+.member:hover {
+  transform: translateY(-10px);
+}
+
+.member img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.member h4 {
+  margin-bottom: 10px;
+  color: #34495e;
+}
+
+.member p {
+  font-size: 0.95em;
+  color: #7f8c8d;
+}
+
+/* Контакты */
+.contacts {
+  text-align: center;
+  padding: 40px 20px;
+  background-color: #2c3e50;
+  color: #fff;
+}
+
+.contacts h2 {
+  margin-bottom: 20px;
+}
+
+.contacts p {
+  font-size: 1.2em;
+  margin-bottom: 10px;
+}
+
+.contacts a {
+  color: #f39c12;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+/* Кнопки */
+.btn {
+  display: inline-block;
+  padding: 12px 30px;
+  margin-top: 20px;
+  background-color: #2980b9;
+  color: #fff;
+  border-radius: 30px;
+  font-size: 1.1em;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: #3498db;
+}
+
+/* Анимации при прокрутке (опционально) */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+}
+</style>
 </head>
 <body>
-<!-- Шапка сайта -->
-<nav class="navbar navbar-expand-lg">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">M-Vita</a>
-    <div class="d-flex align-items-center ms-auto">
-      <a href="{% url 'mvita:services' %}" class="custom-button">Услуги</a>
-      <a href="{% url 'mvita:services' %}" class="custom-button">Мои результаты</a>
-      <a href="{% url 'mvita:services' %}" class="custom-button">Контакты</a>
-      <div class="dropdown ms-3">
-        <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
-          Пользователь
-        </button>
-        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
-          <li><a class="dropdown-item" href="#">Вход</a></li>
-          <li><a class="dropdown-item" href="#">Регистрация</a></li>
-          <li><a class="dropdown-item" href="#">Профиль</a></li>
-          <li><hr class="dropdown-divider"></li>
-          <li><a class="dropdown-item" href="#">Выход</a></li>
-        </ul>
-      </div>
+
+<!-- Главный экран -->
+<header>
+  <h1>Медицинская Диагностическая Компания</h1>
+  <p>Современные решения для вашего здоровья. Быстро, точно, безопасно.</p>
+  <a href="#about" class="btn">Узнать больше</a>
+</header>
+
+<!-- О компании -->
+<section id="about" class="about fade-in">
+  <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Медицинский центр" />
+  <div>
+    <h2>О нашей компании</h2>
+    <p>Наша миссия — предоставлять высокоточные диагностические услуги с использованием передовых технологий. Мы заботимся о здоровье каждого клиента и стремимся к инновациям в медицине.</p>
+    <p>Основана в 2025 году, наша компания быстро завоевала доверие благодаря профессионализму и вниманию к деталям.</p>
+  </div>
+</section>
+
+<!-- Услуги -->
+<section id="services" class="fade-in">
+  <h2>Наши услуги</h2>
+  <div class="services">
+    <div class="service-card">
+      <h3>Магнитно-резонансная томография</h3>
+      <p>Высокоточные МРТ-сканеры для диагностики заболеваний внутренних органов и костно-мышечной системы.</p>
+    </div>
+    <div class="service-card">
+      <h3>Компьютерная томография</h3>
+      <p>Быстрые и безопасные КТ-обследования с минимальной дозой радиации.</p>
+    </div>
+    <div class="service-card">
+      <h3>Лабораторные исследования</h3>
+      <p>Широкий спектр анализов для точной диагностики и мониторинга здоровья.</p>
     </div>
   </div>
-</nav>
+</section>
 
-
-
-<footer class="text-center">
-  <div class="container">
-    <div class="row justify-content-center mb-3">
-      <a href="{% url 'mvita:services' %}" class="text-decoration-none fs-5 fw-bold">Карта проезда</a>
-      <a href="{% url 'mvita:services' %}" class="text-decoration-none fs-5 fw-bold">Обратная связь</a>
-      <a href="{% url 'mvita:services' %}" class="text-decoration-none fs-5 fw-bold">Наши врачи</a>
-      <!-- добавьте другие кнопки по необходимости -->
+<!-- Преимущества -->
+<section id="advantages" class="fade-in">
+  <h2>Почему выбирают нас</h2>
+  <div class="advantages">
+    <div class="advantage">
+      <h3>Современное оборудование</h3>
+      <p>Используем только передовые технологии и оборудование мирового уровня.</p>
     </div>
-    <p class="mb-0">&copy; 2025 M-Vita. Все права защищены.</p>
+    <div class="advantage">
+      <h3>Опытные специалисты</h3>
+      <p>В нашей команде — лучшие врачи и инженеры в области диагностики.</p>
+    </div>
+    <div class="advantage">
+      <h3>Комфорт и безопасность</h3>
+      <p>Создаем максимально комфортные условия и соблюдаем все стандарты безопасности.</p>
+    </div>
   </div>
-</footer>
+</section>
 
-<!-- Скрипты Bootstrap -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Команда -->
+<section id="team" class="fade-in">
+  <h2>Наша команда</h2>
+  <div class="team">
+    <div class="member">
+      <img src="https://images.unsplash.com/photo-1544723795-3fb726f2f18e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Директор" />
+      <h4>Иван Иванов</h4>
+      <p>Директор, врач-диагност</p>
+    </div>
+    <div class="member">
+      <img src="https://images.unsplash.com/photo-1544723795-3fb726f2f18e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Главный инженер" />
+      <h4>Мария Смирнова</h4>
+      <p>Главный инженер, специалист по оборудованию</p>
+    </div>
+    <div class="member">
+      <img src="https://images.unsplash.com/photo-1544723795-3fb726f2f18e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Лаборант" />
+      <h4>Алексей Петров</h4>
+      <p>Лаборант, эксперт по анализам</p>
+    </div>
+  </div>
+</section>
+
+<!-- Контакты -->
+<section id="contacts" class="contacts fade-in">
+  <h2>Контакты</h2>
+  <p>г. Москва, ул. Здоровья, д. 10</p>
+  <p>Телефон: +7 (495) 123-45-67</p>
+  <p>Email: info@meddiagnostics.ru</p>
+  <a href="https://maps.google.com" target="_blank" class="btn">Посмотреть на карте</a>
+</section>
+
+<!-- Скрипты (если нужны) -->
+<script>
+  // Можно добавить плавную прокрутку или анимации при прокрутке
+  document.querySelectorAll('.fade-in').forEach(el => {
+    el.style.opacity = 0;
+    window.addEventListener('scroll', () => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 50) {
+        el.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
+        el.style.opacity = 1;
+        el.style.transform = 'translateY(0)';
+      }
+    });
+  });
+</script>
 </body>
 </html>
