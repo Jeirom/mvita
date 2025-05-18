@@ -176,53 +176,34 @@ footer p {
 </header>
 
 <!-- Форма записи -->
-<section id="appointment" class="fade-in">
-  <h2>Заполните форму</h2>
-  <div class="form-container">
-      <form method="post" action="{% url 'mvita:record_create' %}">
-      {% csrf_token %}
-
-      <!-- Адрес клиники (два варианта) -->
-      <div class="form-group">
-        <label class="form-label">Адрес клиники (вариант 1)</label>
-        <select name="clinic_address_1" class="form-control" required>
-          <option value="">Выберите адрес</option>
-          <!-- Заглушки -->
-          <option value="address1">Адрес 1 - Название клиники 1</option>
-          <option value="address2">Адрес 2 - Название клиники 2</option>
-        </select>
-      </div>
-
-      <!-- Имя пациента -->
-      <div class="form-group">
-        <label for="patient_name" class="form-label">Имя пациента</label>
-        <input type="text" id="patient_name" name="patient_name" class="form-control" maxlength="100" required />
-      </div>
-
-      <!-- Дата и время -->
-      <div class="form-group">
-        <label for="appointment_date" class="form-label">Дата и время</label>
-        <input type="datetime-local" id="appointment_date" name="appointment_date" class="form-control" required />
-      </div>
-
-      <!-- Услуга -->
-      <div class="form-group">
-        <label for="services" class="form-label">Услуга</label>
-        <select id="services" name="services" class="form-control" required>
-          <option value="">Выберите услугу</option>
-          {% for service in services %}
-            <option value="{{ service.id }}">{{ service.name }}</option>
-          {% endfor %}
-        </select>
-      </div>
-
-      <!-- Кнопка отправки -->
-      <div class="text-center mt-4">
-        <button type="submit" class="btn btn-submit">Записаться</button>
-      </div>
-    </form>
+<form method="post" action="{% url 'mvita:record_create' %}">
+  {% csrf_token %}
+  <!-- Адрес клиники -->
+  <div class="form-group">
+    {{ form.clinic_address_1.label_tag }}
+    {{ form.clinic_address_1 }}
   </div>
-</section>
+  <!-- Имя пациента -->
+  <div class="form-group">
+    {{ form.patient_name.label_tag }}
+    {{ form.patient_name }}
+  </div>
+  <!-- Дата и время -->
+  <div class="form-group">
+    {{ form.appointment_date.label_tag }}
+    {{ form.appointment_date }}
+  </div>
+  <!-- Услуга -->
+  <div class="form-group">
+    {{ form.services.label_tag }}
+    {{ form.services }}
+  </div>
+
+  <!-- Кнопка -->
+  <div class="text-center mt-4">
+    <button type="submit" class="btn btn-submit">Записаться</button>
+  </div>
+</form>
 
 <!-- Подвал -->
 <footer class="mt-5">

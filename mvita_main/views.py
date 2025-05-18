@@ -8,6 +8,7 @@ from django.views.generic import (
     ListView,
 )
 
+from mvita_main.forms import RecordForm
 from mvita_main.models import (
     Doctors,
     Record,
@@ -164,9 +165,9 @@ class RecordListView(ListView):
 
 class RecordCreateView(CreateView):
     model = Record
+    form_class = RecordForm
     template_name = "../templates/record/record_create.html"
-    success_url = reverse_lazy("mvita:services")
-    fields = "__all__"
+    success_url = reverse_lazy("mvita:diagnostic")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -181,26 +182,9 @@ class RecordCreateView(CreateView):
     def form_valid(self, form):
         print("Форма валидна")
         print("POST данные:", self.request.POST)
-        clinic_address_1 = self.request.POST.get('clinic_address_1')
-        patient_name = self.request.POST.get('patient_name')
-        appointment_date = self.request.POST.get('appointment_date')
-        service_id = self.request.POST.get('services')
+        # В форме уже есть все необходимые поля, их можно оставить
+        return super().form_valid(form)
 
-        record = form.save(commit=False)
-        record.address = clinic_address_1  # убедитесь, что поле называется именно так
-        record.patient_name = patient_name
-        record.appointment_date = appointment_date
-
-        # Присвоение услуги
-        try:
-            record.services = Services.objects.get(id=service_id)
-        except Services.DoesNotExist:
-            # Обработка ошибки, например, возврат формы с ошибкой
-            form.add_error('services', 'Выбранная услуга не найдена.')
-            return self.form_invalid(form)
-
-        record.save()
-        return redirect(self.get_success_url())
 
 class RecordUpdateView(UpdateView):
     model = Record

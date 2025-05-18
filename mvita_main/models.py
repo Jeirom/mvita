@@ -111,7 +111,7 @@ class Record(models.Model):
         null=True,
         blank=True,
     )
-    doctor = models.ForeignKey(Doctors, on_delete=models.CASCADE)
+    doctor = models.ForeignKey(Doctors, on_delete=models.CASCADE, null=True, blank=True)
     patient_name = models.CharField(max_length=100, null=True, blank=True)
     appointment_date = models.DateTimeField(null=True, blank=True)
     services = models.ForeignKey(Services, on_delete=CASCADE, null=True, blank=True)
