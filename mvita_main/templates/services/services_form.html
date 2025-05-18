@@ -143,10 +143,10 @@ footer p {
 <!-- Шапка -->
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">M-Vita</a>
+    <a class="navbar-brand" href="/mvita/doctors/">M-Vita</a>
     <div class="d-flex align-items-center ms-auto">
-      <button class="custom-button" onclick="location.href='#'">Контакты</button>
-      <button class="custom-button" onclick="location.href='#results'">Мои результаты</button>
+      <a class="custom-button" href="/mvita/doctors/#сontacts">Контакты</a>
+      <a class="custom-button" href="/mvita/diagnostic/">Мои результаты</a>
       <!-- Меню пользователя -->
       <div class="dropdown ms-3">
         <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
@@ -165,40 +165,25 @@ footer p {
 </nav>
 
 <!-- Главный экран -->
-<header class="text-center py-5" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: #fff;">
+<header class="text-center py-5" style="background: linear-gradient(135deg, #4facfe, #00f2fe); color: #fff;">
   <h1 style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 3em;">M-Vita</h1>
-  <p style="font-size: 1.3em; max-width: 700px; margin: 0 auto;">Современные решения для вашего здоровья. Быстро, точно, безопасно.</p>
+  <div style="margin-top: 20px;">
+    <p style="font-size: 1.3em; max-width: 700px; margin: 0 auto;">Современные решения для вашего здоровья. Быстро, точно, безопасно.</p>
+    <a href="/mvita/record/new/" class="btn btn-primary mt-3" style="font-size: 1.2em; padding: 10px 20px; text-decoration: none; border-radius: 5px; background-color: #fff; color: #4facfe; font-weight: 600;">Записаться</a>
+  </div>
 </header>
 
 <!-- Услуги -->
 <section id="services" class="fade-in">
   <h2>Наши услуги</h2>
   <div class="d-flex flex-wrap justify-content-center gap-4">
+    {% for service in services %}
     <div class="service-card">
-      <h3>Общий анализ крови</h3>
-      <p>Быстрый и точный анализ для оценки общего состояния организма.</p>
-      <p class="fw-bold">Цена: 500 руб.</p>
+      <h3>{{ service.name }}</h3>
+      <p>{{ service.description }}</p>
+      <p class="fw-bold">Цена: {{ service.price }} руб.</p>
     </div>
-    <div class="service-card">
-      <h3>Ультразвуковое исследование</h3>
-      <p>Безопасное исследование внутренних органов и тканей.</p>
-      <p class="fw-bold">Цена: 1500 руб.</p>
-    </div>
-    <div class="service-card">
-      <h3>ЭКГ</h3>
-      <p>Диагностика сердечно-сосудистой системы.</p>
-      <p class="fw-bold">Цена: 800 руб.</p>
-    </div>
-    <div class="service-card">
-      <h3>Флюорография</h3>
-      <p>Обследование легких для выявления заболеваний.</p>
-      <p class="fw-bold">Цена: 1200 руб.</p>
-    </div>
-    <div class="service-card">
-      <h3>Маммография</h3>
-      <p>Обследование молочных желез для ранней диагностики.</p>
-      <p class="fw-bold">Цена: 2000 руб.</p>
-    </div>
+    {% endfor %}
   </div>
 </section>
 

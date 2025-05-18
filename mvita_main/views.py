@@ -1,3 +1,4 @@
+from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView,
@@ -36,8 +37,9 @@ class DoctorsCreateView(CreateView):
 
 class DoctorsDetailView(DetailView):
     model = Doctors
+    fields = ["first_name", "last_name", "specialization"]
     template_name = "../templates/doctors/doctors_detail.html"
-    context_object_name = "doc"
+    context_object_name = "doctors"
 
 
 class DoctorsUpdateView(UpdateView):
@@ -98,7 +100,6 @@ class ServicesDeleteView(DeleteView):
 
 class ServicesListView(ListView):
     model = Services
-    template_name = "services_form.html"
     context_object_name = "services"
     template_name = "../templates/services/services_form.html"
 
@@ -163,9 +164,43 @@ class RecordListView(ListView):
 
 class RecordCreateView(CreateView):
     model = Record
-    template_name = "record_create.html"
-    success_url = reverse_lazy("mvita:record_form")
+    template_name = "../templates/record/record_create.html"
+    success_url = reverse_lazy("mvita:services")
+    fields = "__all__"
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['doctors'] = Doctors.objects.all()
+        context['services'] = Services.objects.all()
+        context['ADDRES_CLINIC'] = [
+            ('ул. Ленина, д.1', 'Офис 1'),
+            ('ул. Пушкина, д.5', 'Офис 2')
+        ]
+        return context
+
+    def form_valid(self, form):
+        print("Форма валидна")
+        print("POST данные:", self.request.POST)
+        clinic_address_1 = self.request.POST.get('clinic_address_1')
+        patient_name = self.request.POST.get('patient_name')
+        appointment_date = self.request.POST.get('appointment_date')
+        service_id = self.request.POST.get('services')
+
+        record = form.save(commit=False)
+        record.address = clinic_address_1  # убедитесь, что поле называется именно так
+        record.patient_name = patient_name
+        record.appointment_date = appointment_date
+
+        # Присвоение услуги
+        try:
+            record.services = Services.objects.get(id=service_id)
+        except Services.DoesNotExist:
+            # Обработка ошибки, например, возврат формы с ошибкой
+            form.add_error('services', 'Выбранная услуга не найдена.')
+            return self.form_invalid(form)
+
+        record.save()
+        return redirect(self.get_success_url())
 
 class RecordUpdateView(UpdateView):
     model = Record
@@ -189,8 +224,8 @@ class RecordDeleteView(DeleteView):
 
 class DiagnosticListView(ListView):
     model = DiagnosticResults
-    template_name = "diagnostic_form.html"
-    context_object_name = "record"
+    template_name = "../templates/diagnostic/diagnostic_form.html"
+    context_object_name = "diagnostic"
 
 
 class DiagnosticCreateView(CreateView):

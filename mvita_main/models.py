@@ -70,6 +70,7 @@ class Services(models.Model):
     description = models.CharField(
         max_length=255, verbose_name="Описание услуги", blank=True, null=True
     )
+    price = models.CharField(max_length=255, verbose_name="Цена", blank=True, null=True)
 
 
 class Information(models.Model):
@@ -104,21 +105,16 @@ class Record(models.Model):
         services (ForeignKey): Связь с моделью Services, указывающая на услуги, которые будут предоставлены.
     """
 
-    ADDRES_CLINIC = [
-        ("Клиника на Малыгина", "Ул.Малыгина 44, 1 этаж"),
-        ("Клиника на Федюнинского", "Ул.Федюнинского 3, 1 этаж"),
-    ]
     addres = models.CharField(
         max_length=255,
         verbose_name="Адрес клиники",
         null=True,
         blank=True,
-        choices=ADDRES_CLINIC,
     )
     doctor = models.ForeignKey(Doctors, on_delete=models.CASCADE)
-    patient_name = models.CharField(max_length=100)
-    appointment_date = models.DateTimeField()
-    services = models.ForeignKey(Services, on_delete=CASCADE)
+    patient_name = models.CharField(max_length=100, null=True, blank=True)
+    appointment_date = models.DateTimeField(null=True, blank=True)
+    services = models.ForeignKey(Services, on_delete=CASCADE, null=True, blank=True)
 
 
 class DiagnosticResults(models.Model):
