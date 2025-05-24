@@ -1,4 +1,5 @@
-from django.shortcuts import redirect
+from django.http import HttpResponse
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView,
@@ -159,7 +160,7 @@ class InformationDeleteView(DeleteView):
 
 class RecordListView(ListView):
     model = Record
-    template_name = "record_form.html"
+    template_name = "../templates/record/record_form.html"
     context_object_name = "record"
 
 
@@ -233,3 +234,16 @@ class DiagnosticDeleteView(DeleteView):
     model = DiagnosticResults
     template_name = "diagnostic_delete.html"
     success_url = reverse_lazy("mvita:diagnostic_form")
+
+
+#################### Other's Views  ####################
+
+
+def history_view(request) -> HttpResponse:
+    """
+    Контроллер для отображения истории компании.
+
+    :param request: HTTP запрос
+    :return: HttpResponse
+    """
+    return render(request, "../templates/other/history.html")

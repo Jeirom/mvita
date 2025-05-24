@@ -82,14 +82,8 @@ class Information(models.Model):
         address (str): Адрес клиники.
     """
 
-    phone = models.CharField(
-        max_length=255, verbose_name="Номер телефона", null=True, blank=True
-    )
-    address = models.CharField(
-        max_length=255, verbose_name="Адрес клиники", null=True, blank=True
-    )
-    information = models.TextField(verbose_name="Главная информация", blank=True, null=True
-    )
+    name = models.CharField(max_length=255, verbose_name="Цена", blank=True, null=True)
+
 
 
 class Record(models.Model):
@@ -105,7 +99,7 @@ class Record(models.Model):
         services (ForeignKey): Связь с моделью Services, указывающая на услуги, которые будут предоставлены.
     """
 
-    addres = models.CharField(
+    address = models.CharField(
         max_length=255,
         verbose_name="Адрес клиники",
         null=True,

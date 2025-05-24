@@ -48,4 +48,6 @@ urlpatterns = [
     path("services/<int:pk>/edit/", ServicesUpdateView.as_view(), name="services_edit"),
     path("services/<int:pk>/delete/", ServicesDeleteView.as_view(), name="services_delete"),
 
+    path("history/", history_view, name='history'),
+
 ]

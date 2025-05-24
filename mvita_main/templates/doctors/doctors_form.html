@@ -259,8 +259,8 @@ footer p {
   <div class="container-fluid">
     <a class="navbar-brand" href="/mvita/doctors/">M-Vita</a>
     <div class="d-flex align-items-center ms-auto">
+      <a class="navbar-brand" href="/mvita/history/">О нас</a>
       <button class="custom-button" onclick="location.href='#services'">Услуги</button>
-      <button class="custom-button" onclick="location.href='#about'">О компании</button>
       <button class="custom-button" onclick="location.href='#contacts'">Контакты</button>
       <div class="dropdown ms-3">
         <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown" aria-expanded="false">
@@ -359,20 +359,29 @@ footer p {
   </div>
 </section>
 
-<!-- Контакты -->
-<section id="contacts" class="fade-in">
-  <h2>Контакты</h2>
-  <p>г. Тюмень, улица Малыгина 44, 1 этаж</p>
-  <p>Телефон: +7 (495) 123-45-67</p>
-  <p>Email: random@emailcoolnamemedic.ru</p>
-  <a href="https://yandex.ru/maps/55/tyumen/?ll=65.522132%2C57.166730&mode=whatshere" target="_blank" class="btn btn-custom mt-3">Посмотреть на карте</a>
+<section id="contacts" class="fade-in d-flex align-items-center" style="gap: 20px;">
+  <!-- Контактная информация -->
+  <div style="flex: 1;">
+    <h2>Контакты</h2>
+    <p>г. Тюмень, улица Малыгина 44, 1 этаж</p>
+    <p>Телефон: +7 (495) 123-45-67</p>
+    <p>Email: random@emailcoolnamemedic.ru</p>
+    <a href="https://yandex.ru/map-widget/v1/?from=mapframe&ll=65.551147%2C57.142150&mode=whatshere&source=mapframe&utm_source=mapframe&whatshere%5Bpoint%5D=65.551352%2C57.142199&whatshere%5Bzoom%5D=16.27&z=16.27" target="_blank" class="btn btn-custom mt-3">Посмотреть на карте</a>
+    <!-- Кнопка обратной связи -->
+    <a href="mvita:feedback" target="_blank" class="btn btn-custom mt-3">Обратная связь</a>
+  </div>
+  <!-- Карта -->
+  <div style="border: 2px solid #ccc; border-radius: 10px; width: 372px; height: 372px; overflow: hidden;">
+    <iframe
+      src="https://yandex.ru/map-widget/v1/?ll=65.522132%2C57.166730&mode=whatshere&z=14"
+      width="100%"
+      height="100%"
+      style="border: none;"
+      allowfullscreen
+      loading="lazy"
+    ></iframe>
+  </div>
 </section>
-<div style="position:relative;overflow:hidden;">
-  <a href="https://yandex.ru/maps/55/tyumen/?utm_medium=mapframe&utm_source=maps" style="color:#eee;font-size:12px;position:absolute;top:0px;">Тюмень</a>
-  <a href="https://yandex.ru/maps/55/tyumen/?ll=65.522132%2C57.166730&mode=whatshere&utm_medium=mapframe&utm_source=maps&whatshere%5Bpoint%5D=65.516438%2C57.168926&whatshere%5Bzoom%5D=14.8&z=14.8" style="color:#eee;font-size:12px;position:absolute;top:14px;">Река Тура — Яндекс Карты</a>
-  <iframe src="https://yandex.ru/map-widget/v1/?ll=65.522132%2C57.166730&mode=whatshere&whatshere%5Bpoint%5D=65.516438%2C57.168926&whatshere%5Bzoom%5D=14.8&z=14.8" width="560" height="400" frameborder="1" allowfullscreen="true" style="position:relative;"></iframe>
-</div>
-
 <!-- Подвал -->
 <footer>
   <div class="container">

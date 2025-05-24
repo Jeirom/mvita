@@ -151,6 +151,7 @@ footer p {
     <div class="d-flex align-items-center ms-auto">
       <a class="custom-button" href="/mvita/doctors/#contacts">Контакты</a>
       <a class="custom-button" href="/mvita/diagnostic/">Мои результаты</a>
+      <a class="custom-button" href="/mvita/record/">Мои записи</a>
 
       <!-- Меню пользователя -->
       <div class="dropdown ms-3">
@@ -180,8 +181,8 @@ footer p {
   {% csrf_token %}
   <!-- Адрес клиники -->
   <div class="form-group">
-    {{ form.clinic_address_1.label_tag }}
-    {{ form.clinic_address_1 }}
+    {{ form.address.label_tag }}
+    {{ form.address }}
   </div>
   <!-- Имя пациента -->
   <div class="form-group">

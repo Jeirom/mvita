@@ -9,7 +9,7 @@ class DoctorsForm(forms.ModelForm):
 
 
 class RecordForm(forms.ModelForm):
-    clinic_address_1 = forms.ChoiceField(
+    address = forms.ChoiceField(
         choices=[
             ('ул. Ленина, д.1', 'Офис 1'),
             ('ул. Пушкина, д.5', 'Офис 2')
@@ -39,4 +39,4 @@ class RecordForm(forms.ModelForm):
 
     class Meta:
         model = Record
-        fields = ['clinic_address_1', 'patient_name', 'appointment_date', 'services']
+        fields = ['address', 'patient_name', 'appointment_date', 'services']
