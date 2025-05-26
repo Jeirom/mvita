@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView,
@@ -28,6 +28,10 @@ class DoctorsListView(ListView):
     fields = ["first_name", "last_name", "specialization"]
     template_name = "../templates/doctors/doctors_form.html"
     context_object_name = "doctors"
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['doctors'] = Doctors.objects.all()
+        context['info'] = get_object_or_404(Information, name='основная')
 
 
 class DoctorsCreateView(CreateView):
@@ -168,15 +172,14 @@ class RecordCreateView(CreateView):
     model = Record
     form_class = RecordForm
     template_name = "../templates/record/record_create.html"
-    success_url = reverse_lazy("mvita:diagnostic")
+    success_url = reverse_lazy("mvita:record")
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['doctors'] = Doctors.objects.all()
         context['services'] = Services.objects.all()
         context['ADDRES_CLINIC'] = [
-            ('ул. Ленина, д.1', 'Офис 1'),
-            ('ул. Пушкина, д.5', 'Офис 2')
+            ('ул. Ленина, д.1', 'Клиника на Малыгина'),
         ]
         return context
 

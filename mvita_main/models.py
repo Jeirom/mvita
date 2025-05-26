@@ -72,18 +72,33 @@ class Services(models.Model):
     )
     price = models.CharField(max_length=255, verbose_name="Цена", blank=True, null=True)
 
+    def __str__(self):
+        return self.name
+
+
+# def singleton(cls):
+#     """Декоратор для Information. Для создания единственного экземпляра класса"""
+#     instances = {}
+#     def get_instance(*args, **kwargs):
+#         if cls not in instances:
+#             instances[cls] = cls(*args, **kwargs)
+#         return instances[cls]
+#     return get_instance
+
 
 class Information(models.Model):
     """
     Модель для хранения контактной информации клиники.
-
-    Attributes:
-        phone (str): Номер телефона клиники.
-        address (str): Адрес клиники.
     """
 
     name = models.CharField(max_length=255, verbose_name="Цена", blank=True, null=True)
-
+    info1 = models.CharField(max_length=1020, verbose_name='О нашей компании', blank=True, null=True)
+    info2 = models.CharField(max_length=1020, verbose_name='Адрес клиники', blank=True, null=True)
+    info3 = models.CharField(max_length=1020, verbose_name='Номер телефона', blank=True, null=True)
+    info4 = models.CharField(max_length=1020, verbose_name='Email', blank=True, null=True)
+    info5 = models.CharField(max_length=1020, verbose_name='Наш путь', blank=True, null=True)
+    info6 = models.CharField(max_length=1020, verbose_name='Наша миссия', blank=True, null=True)
+    info7 = models.CharField(max_length=1020, verbose_name='Наши ценности', blank=True, null=True)
 
 
 class Record(models.Model):

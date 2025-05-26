@@ -11,10 +11,9 @@ class DoctorsForm(forms.ModelForm):
 class RecordForm(forms.ModelForm):
     address = forms.ChoiceField(
         choices=[
-            ('ул. Ленина, д.1', 'Офис 1'),
-            ('ул. Пушкина, д.5', 'Офис 2')
+            ('ул. Малыгина 44', 'Клиника на Малыгина'),
         ],
-        label='Адрес клиники (вариант 1)',
+        label='Адрес клиники',
         widget=forms.Select(attrs={'class': 'form-control', 'required': True})
     )
     patient_name = forms.CharField(

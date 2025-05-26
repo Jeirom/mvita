@@ -177,28 +177,34 @@ footer p {
 </header>
 
 <!-- Форма записи -->
-<form method="post" action="{% url 'mvita:record_create' %}">
-  {% csrf_token %}
-  <!-- Адрес клиники -->
-  <div class="form-group">
-    {{ form.address.label_tag }}
-    {{ form.address }}
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <form method="post" action="{% url 'mvita:record_create' %}">
+        {% csrf_token %}
+        <!-- Ваша форма -->
+        <div class="form-group">
+          {{ form.address.label_tag }}
+          {{ form.address }}
+        </div>
+        <div class="form-group">
+          {{ form.patient_name.label_tag }}
+          {{ form.patient_name }}
+        </div>
+        <div class="form-group">
+          {{ form.appointment_date.label_tag }}
+          {{ form.appointment_date }}
+        </div>
+        <div class="form-group">
+          {{ form.services.label_tag }}
+          {{ form.services }}
+        </div>
+        <!-- Кнопка отправки -->
+        <button type="submit" class="btn btn-primary">Записаться</button>
+      </form>
+    </div>
   </div>
-  <!-- Имя пациента -->
-  <div class="form-group">
-    {{ form.patient_name.label_tag }}
-    {{ form.patient_name }}
-  </div>
-  <!-- Дата и время -->
-  <div class="form-group">
-    {{ form.appointment_date.label_tag }}
-    {{ form.appointment_date }}
-  </div>
-  <!-- Услуга -->
-  <div class="form-group">
-    {{ form.services.label_tag }}
-    {{ form.services }}
-  </div>
+</div>
 
   <!-- Кнопка -->
   <div class="text-center mt-4">
