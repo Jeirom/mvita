@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.shortcuts import redirect, render, get_object_or_404
 from django.urls import reverse_lazy
@@ -168,6 +169,11 @@ class RecordListView(ListView):
     template_name = "../templates/record/record_form.html"
     context_object_name = "record"
 
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        # Фильтруем по текущему пользователю
+        return queryset.filter(user=self.request.user)
+
 
 class RecordCreateView(CreateView):
     model = Record
@@ -185,9 +191,7 @@ class RecordCreateView(CreateView):
         return context
 
     def form_valid(self, form):
-        print("Форма валидна")
-        print("POST данные:", self.request.POST)
-        # В форме уже есть все необходимые поля, их можно оставить
+        form.instance.user = self.request.user
         return super().form_valid(form)
 
 

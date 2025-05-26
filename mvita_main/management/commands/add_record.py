@@ -21,6 +21,13 @@ class Command(BaseCommand):
             self.stdout.write(self.style.ERROR("Услуга с id=1 не найден."))
             return
 
+        # Получаем объект User с id=1
+        try:
+            services_instance = Services.objects.get(id=1)
+        except Services.DoesNotExist:
+            self.stdout.write(self.style.ERROR("Услуга с id=1 не найден."))
+            return
+
 
         my_instance = Record(
             doctor=doctor_instance,

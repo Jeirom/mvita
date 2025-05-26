@@ -1,6 +1,8 @@
 from django.db import models
 from django.db.models import CASCADE
 
+from users.models import User
+
 
 class Reviews(models.Model):
     """
@@ -11,7 +13,6 @@ class Reviews(models.Model):
         text (str): Текст отзыва, может быть пустым.
         rate (str): Оценка врача в виде звезд, выбирается из DOCTOR_RATE.
     """
-
     DOCTOR_RATE: list[tuple[str, str]] = [
         ("5", "Все отлично!"),
         ("4", "Все хорошо."),
@@ -114,6 +115,7 @@ class Record(models.Model):
         services (ForeignKey): Связь с моделью Services, указывающая на услуги, которые будут предоставлены.
     """
 
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     address = models.CharField(
         max_length=255,
         verbose_name="Адрес клиники",
@@ -134,7 +136,7 @@ class DiagnosticResults(models.Model):
         record (ForeignKey): Связь с моделью Record, указывающая на запись, к которой относятся результаты.
         results (str): Результаты диагностики, могут быть пустыми.
     """
-
+    user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     record = models.ForeignKey(
         Record,
         max_length=255,
