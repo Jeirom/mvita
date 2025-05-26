@@ -31,7 +31,8 @@ class DoctorsListView(ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['doctors'] = Doctors.objects.all()
-        context['info'] = get_object_or_404(Information, name='основная')
+        context['info'] = get_object_or_404(Information, id=4)
+        return context
 
 
 class DoctorsCreateView(CreateView):
@@ -249,4 +250,15 @@ def history_view(request) -> HttpResponse:
     :param request: HTTP запрос
     :return: HttpResponse
     """
-    return render(request, "../templates/other/history.html")
+    info = Information.objects.get(name='основная')
+    context = {
+        'name': info.name,
+        'info1': info.info1,
+        'info2': info.info2,
+        'info3': info.info3,
+        'info4': info.info4,
+        'info5': info.info5,
+        'info6': info.info6,
+        'info7': info.info7,
+    }
+    return render(request, "../templates/other/history.html", context=context)
