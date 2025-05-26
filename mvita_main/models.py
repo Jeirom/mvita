@@ -78,15 +78,6 @@ class Services(models.Model):
         return self.name
 
 
-# def singleton(cls):
-#     """Декоратор для Information. Для создания единственного экземпляра класса"""
-#     instances = {}
-#     def get_instance(*args, **kwargs):
-#         if cls not in instances:
-#             instances[cls] = cls(*args, **kwargs)
-#         return instances[cls]
-#     return get_instance
-
 
 class Information(models.Model):
     """

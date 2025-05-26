@@ -30,7 +30,8 @@ from mvita_main.views import (
     ServicesDetailView,
     ServicesCreateView,
     ServicesUpdateView,
-    ServicesDeleteView, history_view,
+    ServicesDeleteView,
+    history_view,
 )
 
 app_name = MvitaMainConfig.name
