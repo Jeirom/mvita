@@ -13,6 +13,7 @@ class Reviews(models.Model):
         text (str): Текст отзыва, может быть пустым.
         rate (str): Оценка врача в виде звезд, выбирается из DOCTOR_RATE.
     """
+
     DOCTOR_RATE: list[tuple[str, str]] = [
         ("5", "Все отлично!"),
         ("4", "Все хорошо."),
@@ -93,13 +94,27 @@ class Information(models.Model):
     """
 
     name = models.CharField(max_length=255, verbose_name="Цена", blank=True, null=True)
-    info1 = models.CharField(max_length=1020, verbose_name='О нашей компании', blank=True, null=True)
-    info2 = models.CharField(max_length=1020, verbose_name='Адрес клиники', blank=True, null=True)
-    info3 = models.CharField(max_length=1020, verbose_name='Номер телефона', blank=True, null=True)
-    info4 = models.CharField(max_length=1020, verbose_name='Email', blank=True, null=True)
-    info5 = models.CharField(max_length=1020, verbose_name='Наш путь', blank=True, null=True)
-    info6 = models.CharField(max_length=1020, verbose_name='Наша миссия', blank=True, null=True)
-    info7 = models.CharField(max_length=1020, verbose_name='Наши ценности', blank=True, null=True)
+    info1 = models.CharField(
+        max_length=1020, verbose_name="О нашей компании", blank=True, null=True
+    )
+    info2 = models.CharField(
+        max_length=1020, verbose_name="Адрес клиники", blank=True, null=True
+    )
+    info3 = models.CharField(
+        max_length=1020, verbose_name="Номер телефона", blank=True, null=True
+    )
+    info4 = models.CharField(
+        max_length=1020, verbose_name="Email", blank=True, null=True
+    )
+    info5 = models.CharField(
+        max_length=1020, verbose_name="Наш путь", blank=True, null=True
+    )
+    info6 = models.CharField(
+        max_length=1020, verbose_name="Наша миссия", blank=True, null=True
+    )
+    info7 = models.CharField(
+        max_length=1020, verbose_name="Наши ценности", blank=True, null=True
+    )
 
 
 class Record(models.Model):
@@ -136,6 +151,7 @@ class DiagnosticResults(models.Model):
         record (ForeignKey): Связь с моделью Record, указывающая на запись, к которой относятся результаты.
         results (str): Результаты диагностики, могут быть пустыми.
     """
+
     user = models.ForeignKey(User, on_delete=models.CASCADE, blank=True, null=True)
     record = models.ForeignKey(
         Record,

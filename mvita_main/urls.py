@@ -1,13 +1,37 @@
 from django.urls import path
 from mvita_main.apps import MvitaMainConfig
-# from mvita_main.views import (
-#     DoctorsListView,
-#     DoctorsCreateView,
-#     DoctorsDeleteView,
-#     DoctorsDetailView,
-#     DoctorsUpdateView,
-# )
-from mvita_main.views import *
+from mvita_main.views import (
+    DoctorsListView,
+    DoctorsDetailView,
+    DoctorsCreateView,
+    DoctorsUpdateView,
+    DoctorsDeleteView,
+    DiagnosticListView,
+    DiagnosticDetailView,
+    DiagnosticCreateView,
+    DiagnosticUpdateView,
+    DiagnosticDeleteView,
+    InformationListView,
+    InformationDetailView,
+    InformationCreateView,
+    InformationUpdateView,
+    InformationDeleteView,
+    RecordListView,
+    RecordDetailView,
+    RecordCreateView,
+    RecordUpdateView,
+    RecordDeleteView,
+    ReviewsListView,
+    ReviewsDetailView,
+    ReviewsCreateView,
+    ReviewsUpdateView,
+    ReviewsDeleteView,
+    ServicesListView,
+    ServicesDetailView,
+    ServicesCreateView,
+    ServicesUpdateView,
+    ServicesDeleteView, history_view,
+)
 
 app_name = MvitaMainConfig.name
 
@@ -17,37 +41,60 @@ urlpatterns = [
     path("new/", DoctorsCreateView.as_view(), name="doctors_create"),
     path("<int:pk>/edit/", DoctorsUpdateView.as_view(), name="doctors_edit"),
     path("<int:pk>/delete/", DoctorsDeleteView.as_view(), name="doctors_delete"),
-
-    path("diagnostic/", DiagnosticListView.as_view(), name='diagnostic'),
-    path("diagnostic/<int:pk>/", DiagnosticDetailView.as_view(), name="diagnostic_detail"),
+    path("diagnostic/", DiagnosticListView.as_view(), name="diagnostic"),
+    path(
+        "diagnostic/<int:pk>/", DiagnosticDetailView.as_view(), name="diagnostic_detail"
+    ),
     path("diagnostic/new/", DiagnosticCreateView.as_view(), name="diagnostic_create"),
-    path("diagnostic/<int:pk>/edit/", DiagnosticUpdateView.as_view(), name="diagnostic_edit"),
-    path("diagnostic/<int:pk>/delete/", DiagnosticDeleteView.as_view(), name="diagnostic_delete"),
-
-    path("information/", InformationListView.as_view(),name='info'),
-    path("information/<int:pk>/", InformationDetailView.as_view(), name="information_detail"),
-    path("information/new/", InformationCreateView.as_view(), name="information_create"),
-    path("information/<int:pk>/edit/", InformationUpdateView.as_view(), name="information_edit"),
-    path("information/<int:pk>/delete/", InformationDeleteView.as_view(), name="information_delete"),
-
-    path("record/", RecordListView.as_view(), name='record'),
+    path(
+        "diagnostic/<int:pk>/edit/",
+        DiagnosticUpdateView.as_view(),
+        name="diagnostic_edit",
+    ),
+    path(
+        "diagnostic/<int:pk>/delete/",
+        DiagnosticDeleteView.as_view(),
+        name="diagnostic_delete",
+    ),
+    path("information/", InformationListView.as_view(), name="info"),
+    path(
+        "information/<int:pk>/",
+        InformationDetailView.as_view(),
+        name="information_detail",
+    ),
+    path(
+        "information/new/", InformationCreateView.as_view(), name="information_create"
+    ),
+    path(
+        "information/<int:pk>/edit/",
+        InformationUpdateView.as_view(),
+        name="information_edit",
+    ),
+    path(
+        "information/<int:pk>/delete/",
+        InformationDeleteView.as_view(),
+        name="information_delete",
+    ),
+    path("record/", RecordListView.as_view(), name="record"),
     path("record/<int:pk>/", RecordDetailView.as_view(), name="record_detail"),
     path("record/new/", RecordCreateView.as_view(), name="record_create"),
     path("record/<int:pk>/edit/", RecordUpdateView.as_view(), name="record_edit"),
     path("record/<int:pk>/delete/", RecordDeleteView.as_view(), name="record_delete"),
-
     path("reviews/", ReviewsListView.as_view()),
     path("reviews/<int:pk>/", ReviewsDetailView.as_view(), name="reviews_detail"),
     path("reviews/new/", ReviewsCreateView.as_view(), name="reviews_create"),
     path("reviews/<int:pk>/edit/", ReviewsUpdateView.as_view(), name="reviews_edit"),
-    path("reviews/<int:pk>/delete/", ReviewsDeleteView.as_view(), name="reviews_delete"),
-
-    path("services/", ServicesListView.as_view(), name='services'),
+    path(
+        "reviews/<int:pk>/delete/", ReviewsDeleteView.as_view(), name="reviews_delete"
+    ),
+    path("services/", ServicesListView.as_view(), name="services"),
     path("services/<int:pk>/", ServicesDetailView.as_view(), name="services_detail"),
     path("services/new/", ServicesCreateView.as_view(), name="services_create"),
     path("services/<int:pk>/edit/", ServicesUpdateView.as_view(), name="services_edit"),
-    path("services/<int:pk>/delete/", ServicesDeleteView.as_view(), name="services_delete"),
-
-    path("history/", history_view, name='history'),
-
+    path(
+        "services/<int:pk>/delete/",
+        ServicesDeleteView.as_view(),
+        name="services_delete",
+    ),
+    path("history/", history_view, name="history"),
 ]

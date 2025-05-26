@@ -2,11 +2,14 @@ from django.contrib.auth.models import AbstractUser
 from django.db import models
 
 
-
 class User(AbstractUser):
     username = None
-    first_name = models.CharField(max_length=30, blank=True, null=True, verbose_name="Имя")
-    last_name = models.CharField(max_length=30, blank=True, null=True, verbose_name="Фамилия")
+    first_name = models.CharField(
+        max_length=30, blank=True, null=True, verbose_name="Имя"
+    )
+    last_name = models.CharField(
+        max_length=30, blank=True, null=True, verbose_name="Фамилия"
+    )
     snils = models.CharField(max_length=30, blank=True, null=True, verbose_name="Снилс")
 
     email = models.EmailField(
@@ -33,7 +36,9 @@ class User(AbstractUser):
     tg_id = models.CharField(
         max_length=255, blank=True, null=True, verbose_name="Telegram ID"
     )
-    country = models.CharField(max_length=255, blank=True, null=True, verbose_name='Гражданство')
+    country = models.CharField(
+        max_length=255, blank=True, null=True, verbose_name="Гражданство"
+    )
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
@@ -47,9 +52,11 @@ class User(AbstractUser):
 
 
 class Feedback(models.Model):
-    phone_number = models.CharField(max_length=20, verbose_name='Ваш номер телефона')
-    question = models.TextField(verbose_name='Ваш вопрос')
-    contact_time = models.CharField(max_length=50, verbose_name='Когда с вами связаться?')
+    phone_number = models.CharField(max_length=20, verbose_name="Ваш номер телефона")
+    question = models.TextField(verbose_name="Ваш вопрос")
+    contact_time = models.CharField(
+        max_length=50, verbose_name="Когда с вами связаться?"
+    )
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

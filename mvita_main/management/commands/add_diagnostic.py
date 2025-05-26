@@ -1,6 +1,7 @@
 from django.core.management import BaseCommand
 
 from mvita_main.models import Record, DiagnosticResults
+from users.models import User
 
 
 class Command(BaseCommand):
@@ -13,10 +14,17 @@ class Command(BaseCommand):
             self.stdout.write(self.style.ERROR("Запись с id=4 не найден."))
             return
 
+        try:
+            user_instance = User.objects.get(id=2)
+        except Record.DoesNotExist:
+            self.stdout.write(self.style.ERROR("Запись с id=4 не найден."))
+            return
+
         # Создайте новый объект DiagnosticResults
         diagnostic_result = DiagnosticResults(
+            user=user_instance,
             record=record_instance,
-            results='Все хорошо, Вам осталось три дня :)'
+            results="Все хорошо, Вам осталось три дня :)",
         )
         diagnostic_result.save()
 

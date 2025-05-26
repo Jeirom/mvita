@@ -1,6 +1,5 @@
-from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
-from django.shortcuts import redirect, render, get_object_or_404
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy
 from django.views.generic import (
     CreateView,
@@ -29,10 +28,11 @@ class DoctorsListView(ListView):
     fields = ["first_name", "last_name", "specialization"]
     template_name = "../templates/doctors/doctors_form.html"
     context_object_name = "doctors"
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['doctors'] = Doctors.objects.all()
-        context['info'] = get_object_or_404(Information, id=4)
+        context["doctors"] = Doctors.objects.all()
+        context["info"] = get_object_or_404(Information, id=4)
         return context
 
 
@@ -111,6 +111,7 @@ class ServicesListView(ListView):
     context_object_name = "services"
     template_name = "../templates/services/services_form.html"
 
+
 class ServicesCreateView(CreateView):
     model = Services
     template_name = "services_create.html"
@@ -183,10 +184,10 @@ class RecordCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['doctors'] = Doctors.objects.all()
-        context['services'] = Services.objects.all()
-        context['ADDRES_CLINIC'] = [
-            ('ул. Ленина, д.1', 'Клиника на Малыгина'),
+        context["doctors"] = Doctors.objects.all()
+        context["services"] = Services.objects.all()
+        context["ADDRES_CLINIC"] = [
+            ("ул. Ленина, д.1", "Клиника на Малыгина"),
         ]
         return context
 
@@ -219,6 +220,10 @@ class DiagnosticListView(ListView):
     model = DiagnosticResults
     template_name = "../templates/diagnostic/diagnostic_form.html"
     context_object_name = "diagnostic"
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        return super().form_valid(form)
 
 
 class DiagnosticCreateView(CreateView):
@@ -254,15 +259,15 @@ def history_view(request) -> HttpResponse:
     :param request: HTTP запрос
     :return: HttpResponse
     """
-    info = Information.objects.get(name='основная')
+    info = Information.objects.get(name="основная")
     context = {
-        'name': info.name,
-        'info1': info.info1,
-        'info2': info.info2,
-        'info3': info.info3,
-        'info4': info.info4,
-        'info5': info.info5,
-        'info6': info.info6,
-        'info7': info.info7,
+        "name": info.name,
+        "info1": info.info1,
+        "info2": info.info2,
+        "info3": info.info3,
+        "info4": info.info4,
+        "info5": info.info5,
+        "info6": info.info6,
+        "info7": info.info7,
     }
     return render(request, "../templates/other/history.html", context=context)

@@ -28,12 +28,11 @@ class Command(BaseCommand):
             self.stdout.write(self.style.ERROR("Услуга с id=1 не найден."))
             return
 
-
         my_instance = Record(
             doctor=doctor_instance,
-            patient_name='Иванов',
+            patient_name="Иванов",
             services=services_instance,
-            addres='Улица Здоровья'
+            addres="Улица Здоровья",
         )
         my_instance.save()
 

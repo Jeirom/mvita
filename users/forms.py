@@ -45,15 +45,28 @@ class UserRegisterForm(UserCreationForm):
 class FeedbackForm(forms.ModelForm):
     class Meta:
         model = Feedback
-        fields = ['phone_number', 'question', 'contact_time']
+        fields = ["phone_number", "question", "contact_time"]
         widgets = {
-            'phone_number': forms.TextInput(attrs={
-                'class': 'form-control', 'placeholder': 'Ваш номер телефона', 'required': True
-            }),
-            'question': forms.Textarea(attrs={
-                'class': 'form-control', 'placeholder': 'Ваш вопрос', 'rows': 4, 'required': True
-            }),
-            'contact_time': forms.TextInput(attrs={
-                'class': 'form-control', 'placeholder': 'Когда с вами связаться?', 'required': True
-            }),
+            "phone_number": forms.TextInput(
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "Ваш номер телефона",
+                    "required": True,
+                }
+            ),
+            "question": forms.Textarea(
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "Ваш вопрос",
+                    "rows": 4,
+                    "required": True,
+                }
+            ),
+            "contact_time": forms.TextInput(
+                attrs={
+                    "class": "form-control",
+                    "placeholder": "Когда с вами связаться?",
+                    "required": True,
+                }
+            ),
         }

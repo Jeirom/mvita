@@ -9,10 +9,10 @@ class Command(BaseCommand):
     def handle(self, *args, **kwargs):
         # Пример добавления одного объекта
         my_instance = Doctors(
-            first_name='Иван',
-            last_name='Иванов',
-            specialization='Директор, врач-диагност',
-            experience='22 года'
+            first_name="Иван",
+            last_name="Иванов",
+            specialization="Директор, врач-диагност",
+            experience="22 года",
         )
         my_instance.save()
         self.stdout.write(self.style.SUCCESS("Данные успешно добавлены!"))

@@ -134,8 +134,8 @@ def profile_view(request) -> HttpResponse:
 class FeedbackCreateView(CreateView):
     model = Feedback
     form_class = FeedbackForm
-    template_name = 'feedback_form.html'
-    success_url = reverse_lazy('mvita:doctors')
+    template_name = "feedback_form.html"
+    success_url = reverse_lazy("mvita:doctors")
 
     def form_valid(self, form):
         return super().form_valid(form)
