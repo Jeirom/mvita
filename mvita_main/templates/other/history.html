@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>M-Vita - О компании</title>
+<!-- Подключение Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+<!-- Шрифты -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+  /* Общие стили */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #f4f9fd;
+    color: #333;
+    line-height: 1.6;
+  }
+
+  /* Анимация при появлении */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s forwards;
+  }
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Заголовки */
+  h2 {
+    font-size: 2.8em;
+    margin-bottom: 40px;
+    text-align: center;
+    color: #2c3e50;
+    font-weight: 700;
+  }
+
+  /* Разделы */
+section {
+  padding: 80px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+section:nth-of-type(even) {
+  background-color: #ffffff;
+}
+section:nth-of-type(odd) {
+  background-color: #f4f9fd;
+}
+
+ /* История компании */
+.history {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 30px;
+}
+.history img {
+  flex: 1 1 45%;
+  max-width: 100%;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  object-fit: cover;
+}
+.history div {
+  flex: 1 1 45%;
+}
+.history h5 {
+  font-size: 1.8em;
+  margin-bottom: 20px;
+  color: #34495e;
+}
+.history p {
+  font-size: 1.1em;
+  line-height: 1.8;
+  color: #555;
+}
+
+/* Миссия и ценности */
+.mission-values {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  text-align: center;
+}
+.mission-values h3 {
+  font-size: 2em;
+  margin-bottom: 15px;
+  color: #2980b9;
+}
+.mission-values p {
+  font-size: 1.1em;
+  color: #555;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.8;
+}
+
+/* Команда */
+.team {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+.member {
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+.member:hover {
+  transform: translateY(-10px);
+}
+.member img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+.member h4 {
+  margin-bottom: 10px;
+  color: #34495e;
+}
+.member p {
+  font-size: 0.95em;
+  color: #7f8c8d;
+}
+</style>
+</head>
+<body>
+
+<!-- Шапка -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/mvita/doctors/">M-Vita</a>
+    <div class="d-flex align-items-center ms-auto">
+      <a class="navbar-brand" href="/mvita/doctors/">На главную..</a>
+      <button class="custom-button" onclick="location.href='#contacts'">Контакты</button>
+    </div>
+  </div>
+</nav>
+
+<!-- Главный экран -->
+<header class="text-center py-5" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: #fff;">
+  <h1 style="font-family: 'Montserrat', sans-serif; font-weight: 700; font-size: 3em;">О компании</h1>
+  <p style="font-size: 1.3em; max-width: 700px; margin: 0 auto;">Узнайте историю, миссию и команду профессионалов, стоящих за нашим успехом.</p>
+</header>
+
+<!-- История компании -->
+<section id="history" class="fade-in">
+  <h2>История компании</h2>
+  <div class="history">
+    <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="История компании" />
+    <div>
+      <h5>Наш путь</h5>
+      <p>Основанная в 2025 году, наша компания начала с предоставления высокоточных диагностических услуг. За годы мы выросли в современный медицинский центр, внедряя инновационные технологии и расширяя спектр услуг. Сегодня мы — команда профессионалов, стремящихся к совершенству и заботе о каждом клиенте.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Миссия и ценности -->
+<section id="mission-values" class="fade-in">
+  <h2>Миссия и ценности</h2>
+  <div class="mission-values">
+    <h3>Наша миссия</h3>
+    <p>Обеспечивать точную, безопасную и доступную диагностику для улучшения качества жизни наших клиентов. Мы стремимся к постоянным инновациям и развитию, чтобы быть лидерами в области медицинских технологий.</p>
+    <h3>Наши ценности</h3>
+    <p>Профессионализм, ответственность, инновации, забота о клиенте и командная работа — основные принципы, которыми руководствуемся в нашей деятельности.</p>
+  </div>
+</section>
+
+<!-- Команда врачей -->
+<section id="team" class="fade-in">
+  <h2>Наша команда</h2>
+  <div class="team">
+    <div class="member">
+      <img src="https://images.unsplash.com/photo-1544723795-3fb726f2f18e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Директор" />
+      <h4>Иван Иванов</h4>
+      <p>Директор, врач-диагност</p>
+    </div>
+    <div class="member">
+      <img src="https://images.unsplash.com/photo-1544723795-3fb726f2f18e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Главный инженер" />
+      <h4>Мария Смирнова</h4>
+      <p>Главный инженер, специалист по оборудованию</p>
+    </div>
+    <div class="member">
+      <img src="https://images.unsplash.com/photo-1544723795-3fb726f2f18e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Лаборант" />
+      <h4>Алексей Петров</h4>
+      <p>Лаборант, эксперт по анализам</p>
+    </div>
+  </div>
+</section>
+
+<!-- Контакты -->
+<section id="contacts" class="fade-in">
+  <h2>Контакты</h2>
+  <p>г. Тюмень, улица Малыгина 44, 1 этаж</p>
+  <p>Телефон: +7 (495) 123-45-67</p>
+  <p>Email: info@m-vita.ru</p>
+  <a href="https://yandex.ru/maps/55/tyumen/?ll=65.522132%2C57.166730&mode=whatshere" target="_blank" class="btn btn-custom mt-3">Посмотреть на карте</a>
+</section>
+
+<!-- Подвал -->
+<footer>
+  <p>&copy; 2025 M-Vita. Все права защищены.</p>
+</footer>
+
+<!-- Скрипты Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

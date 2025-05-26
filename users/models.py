@@ -45,3 +45,12 @@ class User(AbstractUser):
         verbose_name = "Пользователь"
         verbose_name_plural = "Пользователи"
 
+
+class Feedback(models.Model):
+    phone_number = models.CharField(max_length=20, verbose_name='Ваш номер телефона')
+    question = models.TextField(verbose_name='Ваш вопрос')
+    contact_time = models.CharField(max_length=50, verbose_name='Когда с вами связаться?')
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Feedback from {self.phone_number} at {self.created_at}"

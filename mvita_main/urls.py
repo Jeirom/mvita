@@ -30,7 +30,7 @@ urlpatterns = [
     path("information/<int:pk>/edit/", InformationUpdateView.as_view(), name="information_edit"),
     path("information/<int:pk>/delete/", InformationDeleteView.as_view(), name="information_delete"),
 
-    path("record/", RecordListView.as_view()),
+    path("record/", RecordListView.as_view(), name='record'),
     path("record/<int:pk>/", RecordDetailView.as_view(), name="record_detail"),
     path("record/new/", RecordCreateView.as_view(), name="record_create"),
     path("record/<int:pk>/edit/", RecordUpdateView.as_view(), name="record_edit"),

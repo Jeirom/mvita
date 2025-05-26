@@ -9,10 +9,9 @@ from django.http import HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views.generic import CreateView, DetailView, UpdateView
-from users.forms import UserRegisterForm
+from users.forms import UserRegisterForm, FeedbackForm
 from config.settings import EMAIL_HOST_USER
-from users.models import User
-
+from users.models import User, Feedback
 
 logger = logging.getLogger(__name__)
 
@@ -132,11 +131,11 @@ def profile_view(request) -> HttpResponse:
     return render(request, "profile.html", {"user": user})
 
 
-@login_required
-def upload_avatar(request) -> HttpResponse:
-    """
-    Обработка загрузки аватара пользователя.
+class FeedbackCreateView(CreateView):
+    model = Feedback
+    form_class = FeedbackForm
+    template_name = 'feedback_form.html'
+    success_url = reverse_lazy('mvita:doctors')
 
-    :param request: HTTP запрос
-    :return: HttpResponse
-    """
+    def form_valid(self, form):
+        return super().form_valid(form)

@@ -12,7 +12,7 @@ from users.views import (
     email_verification,
     CustomLogoutView,
     profile_view,
-    upload_avatar,
+    FeedbackCreateView,
 )
 
 
@@ -51,5 +51,5 @@ urlpatterns = [
         name="password_reset_complete",
     ),
     path("profile/", profile_view, name="profile"),
-    path("upload_avatar/", upload_avatar, name="upload_avatar"),
+    path("feedback/", FeedbackCreateView.as_view(), name='feedback'),
 ]
