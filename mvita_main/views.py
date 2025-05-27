@@ -40,7 +40,8 @@ class DoctorsListView(ListView):
         """
         context = super().get_context_data(**kwargs)
         context["doctors"] = Doctors.objects.all()
-        context["info"] = get_object_or_404(Information, id=4)
+        context["info"] = get_object_or_404(Information, id=3)
+        # context['image'] = get_object_or_404(Information, id=5)
         return context
 
 
