@@ -44,6 +44,13 @@ class InformationAdmin(admin.ModelAdmin):
     # list_filter = ("address",)
     # search_fields = ("address",)
 
+# Доктор
+@admin.register(Doctors)
+class DoctorsAdmin(admin.ModelAdmin):
+    list_display = ("first_name", "last_name", "experience", "image", "specialization",  )
+    # list_filter = ("address",)
+    # search_fields = ("address",)
+
 #
 # # Ценности
 # @admin.register(CompanyValues)

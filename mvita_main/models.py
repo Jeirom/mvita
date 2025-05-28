@@ -59,7 +59,8 @@ class Doctors(models.Model):
         blank=True,
         on_delete=CASCADE,
     )
-
+    image = models.ImageField(max_length=555, upload_to="mvita_main/", blank=True, null=True,
+                                            verbose_name="Фото врача")
 
 class Services(models.Model):
     """

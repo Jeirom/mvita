@@ -139,3 +139,8 @@ class FeedbackCreateView(CreateView):
 
     def form_valid(self, form):
         return super().form_valid(form)
+
+
+def profile_edit(request):
+    user = request.user
+    return render(request, "profile_edit.html", {"user": user})

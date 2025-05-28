@@ -12,7 +12,7 @@ from users.views import (
     email_verification,
     CustomLogoutView,
     profile_view,
-    FeedbackCreateView,
+    FeedbackCreateView, profile_edit,
 )
 
 
@@ -52,4 +52,5 @@ urlpatterns = [
     ),
     path("profile/", profile_view, name="profile"),
     path("feedback/", FeedbackCreateView.as_view(), name="feedback"),
+    path("profile/edit/", profile_edit, name="profile_edit"),
 ]

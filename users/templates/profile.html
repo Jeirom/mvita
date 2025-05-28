@@ -5,85 +5,157 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Профиль пользователя</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat&display=swap');
+
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: #fff;
-            color: #333;
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #ece9e6, #ffffff);
             margin: 0;
-            padding: 40px;
+            padding: 50px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
         }
+
         .container {
-            max-width: 600px;
-            margin: auto;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            background-color: #fafafa;
+            background: #fff;
+            max-width: 700px;
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
         }
+
         h1 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            font-weight: 600;
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
             text-align: center;
+            margin-bottom: 30px;
             color: #222;
+            letter-spacing: 2px;
         }
-        form {
+
+        .buttons-top {
             display: flex;
-            flex-direction: column;
+            justify-content: space-around;
+            margin-bottom: 40px;
         }
-        .field {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 15px;
-        }
-        label {
-            font-weight: 500;
-            margin-bottom: 5px;
-            color: #555;
-        }
-        input {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-family: inherit;
-            font-size: 14px;
-        }
-        .buttons {
-            margin-top: 30px;
-            display: flex;
-            justify-content: space-between;
-        }
-        a.button, button {
-            padding: 12px 24px;
-            border-radius: 4px;
-            text-decoration: none;
+
+        .btn {
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-size: 16px;
             font-weight: 600;
-            transition: background-color 0.3s;
-            border: none;
-            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-        a.edit, button.save {
-            background-color: #007bff;
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
             color: #fff;
         }
-        a.edit:hover, button.save:hover {
-            background-color: #0056b3;
+
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2575fc, #6a11cb);
         }
-        a.back {
+
+        .btn-secondary {
             background-color: #6c757d;
             color: #fff;
         }
-        a.back:hover {
-            background-color: #495057;
+
+        .btn-secondary:hover {
+            background-color: #5a6268;
+        }
+
+        .profile-details {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .field {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .field label {
+            font-family: 'Playfair Display', serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #333;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .field div {
+            font-size: 18px;
+            color: #555;
+        }
+
+        /* Кнопка редактировать */
+        .edit-btn {
+            display: block;
+            margin: 30px auto 0 auto;
+            padding: 14px 40px;
+            font-size: 16px;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(135deg, #ff416c, #ff4b2b);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px rgba(255, 65, 108, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .edit-btn:hover {
+            background: linear-gradient(135deg, #ff4b2b, #ff416c);
+            box-shadow: 0 12px 25px rgba(255, 65, 108, 0.4);
+        }
+
+        /* Адаптивность */
+        @media(max-width: 768px){
+            body {
+                padding: 20px;
+            }
+            .container {
+                padding: 30px 20px;
+            }
+            h1 {
+                font-size: 28px;
+            }
+            .btn {
+                padding: 12px 24px;
+                font-size: 14px;
+            }
+            .field label {
+                font-size: 18px;
+            }
+            .field div {
+                font-size: 16px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>Профиль пользователя</h1>
-        {% if not editing %}
-            <!-- Режим просмотра -->
+        <!-- Навигационные кнопки -->
+        <div class="buttons-top">
+            <a href="/mvita/doctors/" class="btn btn-primary">Вернуться на главную</a>
+            <a href="/mvita/record/" class="btn btn-primary">Мои записи</a>
+            <a href="/mvita/diagnostic/" class="btn btn-primary">Мои результаты</a>
+        </div>
+
+        <!-- Детали профиля -->
+        <div class="profile-details">
             <div class="field">
                 <label>Имя</label>
                 <div>{{ user.first_name }}</div>
@@ -104,50 +176,12 @@
                 <label>Снилс</label>
                 <div>{{ user.snils }}</div>
             </div>
-            <div class="buttons">
-                <!-- Кнопка переключения в режим редактирования -->
-                <form method="post" style="display:inline;">
-                    {% csrf_token %}
-                    <input type="hidden" name="edit" value="true" />
-                    <button type="submit" class="button edit">Редактировать</button>
-                </form>
-                <a href="/mvita/doctors/" class="button back">Вернуться</a>
-            </div>
-        {% else %}
-            <!-- Режим редактирования -->
-            <form method="post">
-                {% csrf_token %}
-                <div class="field">
-                    <label for="first_name">Имя</label>
-                    <input type="text" id="first_name" name="first_name" value="{{ user.first_name }}" required />
-                </div>
-                <div class="field">
-                    <label for="last_name">Фамилия</label>
-                    <input type="text" id="last_name" name="last_name" value="{{ user.last_name }}" required />
-                </div>
-                <div class="field">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" name="email" value="{{ user.email }}" required />
-                </div>
-                <div class="field">
-                    <label for="phone">Телефон</label>
-                    <input type="text" id="phone" name="phone" value="{{ user.phone }}" />
-                </div>
-                <div class="field">
-                    <label for="snils">Снилс</label>
-                    <input type="text" id="snils" name="snils" value="{{ user.snils }}" />
-                </div>
-                <div class="buttons">
-                    <button type="submit" class="save">Сохранить</button>
-                    <!-- Кнопка отмены, возвращает в режим просмотра -->
-                    <form method="post" style="display:inline;">
-                        {% csrf_token %}
-                        <input type="hidden" name="cancel" value="true" />
-                        <button type="submit" class="button back">Отмена</button>
-                    </form>
-                </div>
-            </form>
-        {% endif %}
+        </div>
+
+        <!-- Кнопка редактирования профиля -->
+        <form action="{% url 'users:profile_edit' %}" method="get" style="text-align:center;">
+            <button type="submit" class="edit-btn">Редактировать профиль</button>
+        </form>
     </div>
 </body>
 </html>
