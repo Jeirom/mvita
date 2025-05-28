@@ -163,18 +163,23 @@ h2 {
   line-height: 1.5;
 }
 
-/* Команда */
-.team {
+/* Команда - карусель */
+#team-carousel {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+#team-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
+  transition: transform 0.5s ease;
 }
 .member {
   background: #fff;
   border-radius: 15px;
   padding: 20px;
-  max-width: 250px;
+  flex: 0 0 calc(33.333% - 20px);
+  margin: 10px;
+  max-width: calc(33.333% - 20px);
   text-align: center;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   transition: transform 0.3s;
@@ -187,15 +192,34 @@ h2 {
   height: 150px;
   border-radius: 50%;
   object-fit: cover;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
-.member h4 {
+h4 {
   margin-bottom: 10px;
   color: #34495e;
 }
-.member p {
+p {
   font-size: 0.95em;
   color: #7f8c8d;
+}
+
+/* Стрелки навигации */
+.nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2em;
+  background: rgba(255,255,255,0.7);
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  z-index: 10;
+}
+#prev {
+  left: 10px;
+}
+#next {
+  right: 10px;
 }
 
 /* Контакты */
@@ -254,7 +278,6 @@ footer p {
 </head>
 <body>
 
-
 <!-- Шапка -->
 <nav class="navbar navbar-expand-lg">
   <div class="container-fluid">
@@ -270,7 +293,9 @@ footer p {
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
           <a href="{% url 'users:profile' %}">Профиль</a>
           <a href="{% url 'users:login' %}">Войти</a>
-          <a href="{% url 'users:register' %}">Рег</a>
+          <a href="{% url 'users:register' %}">Регистрация</a>
+          <a href="{% url 'mvita:diagnostic' %}">Мои результаты</a>
+          <a href="{% url 'mvita:record' %}">Мои записи</a>
           <li><hr class="dropdown-divider"></li>
           <a href="{% url 'users:logout' %}">Выход</a>
         </ul>
@@ -341,22 +366,26 @@ footer p {
 <!-- Наша команда -->
 <section id="team" class="fade-in">
   <h2>Наша команда</h2>
-  <div class="d-flex flex-wrap justify-content-center gap-4">
-    <div class="member">
-      <img src="https://images.unsplash.com/photo-1544723795-3fb726f2f18e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Директор" />
-      <h4>Иван Иванов</h4>
-      <p>Директор, врач-диагност</p>
+  <div style="position: relative; max-width: 100%; margin: 0 auto;">
+    <div id="team-carousel">
+      <div id="team-container">
+        {% for doctor in doctors %}
+        <div class="member">
+          {% if doctor.image %}
+            <img src="{{ doctor.image.url }}" alt="{{ doctor.first_name }} {{ doctor.last_name }}">
+          {% else %}
+            <img src="https://m.media-amazon.com/images/M/MV5BOWNmNTA4OTMtNTRlOS00NWQ4LTkyNTQtNzNjMDZjNjc4NTA4XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="{{ doctor.first_name }} {{ doctor.last_name }}">
+          {% endif %}
+          <h4>{{ doctor.first_name }} {{ doctor.last_name }}</h4>
+          <p>{{ doctor.specialization }}</p>
+          <p>Опыт: {{ doctor.experience }}</p>
+        </div>
+        {% endfor %}
+      </div>
     </div>
-    <div class="member">
-      <img src="https://images.unsplash.com/photo-1544723795-3fb726f2f18e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Главный инженер" />
-      <h4>Мария Смирнова</h4>
-      <p>Главный инженер, специалист по оборудованию</p>
-    </div>
-    <div class="member">
-      <img src="https://images.unsplash.com/photo-1544723795-3fb726f2f18e?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80" alt="Лаборант" />
-      <h4>Алексей Петров</h4>
-      <p>Лаборант, эксперт по анализам</p>
-    </div>
+    <!-- Стрелки навигации -->
+    <div id="prev" class="nav-arrow">&lt;</div>
+    <div id="next" class="nav-arrow">&gt;</div>
   </div>
 </section>
 
@@ -398,17 +427,40 @@ footer p {
 <!-- Скрипты Bootstrap -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-  // Анимация появления при прокрутке
-  document.querySelectorAll('.fade-in').forEach(el => {
-    el.style.opacity = 0;
-    window.addEventListener('scroll', () => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight - 50) {
-        el.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
-        el.style.opacity = 1;
-        el.style.transform = 'translateY(0)';
+  // Инициализация карусели
+  document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('team-container');
+    const members = container.children;
+    const totalItems = members.length;
+    const itemsPerPage = 3;
+    let currentIndex = 0;
+
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
+
+    function updateCarousel() {
+      const offset = -currentIndex * (100 / itemsPerPage);
+      container.style.transform = 'translateX(' + offset + '%)';
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) {
+        currentIndex--;
+        updateCarousel();
       }
     });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentIndex < Math.ceil(totalItems / itemsPerPage) - 1) {
+        currentIndex++;
+        updateCarousel();
+      }
+    });
+
+    // Обновление при изменении размера окна
+    window.addEventListener('resize', updateCarousel);
+    // Изначально
+    updateCarousel();
   });
 </script>
 </body>
