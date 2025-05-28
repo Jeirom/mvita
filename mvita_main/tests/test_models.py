@@ -14,7 +14,7 @@ class DoctorsModelTest(TestCase):
             last_name="Иванов",
             specialization="Терапевт",
             experience="5 лет",
-            reviews=review
+            reviews=review,
         )
 
     def test_doctor_creation(self):

@@ -23,7 +23,6 @@ INSTALLED_APPS = [
     "rest_framework",
     "users",
     "mvita_main",
-
 ]
 
 MIDDLEWARE = [

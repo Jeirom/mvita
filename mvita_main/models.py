@@ -59,8 +59,14 @@ class Doctors(models.Model):
         blank=True,
         on_delete=CASCADE,
     )
-    image = models.ImageField(max_length=555, upload_to="mvita_main/", blank=True, null=True,
-                                            verbose_name="Фото врача")
+    image = models.ImageField(
+        max_length=555,
+        upload_to="mvita_main/",
+        blank=True,
+        null=True,
+        verbose_name="Фото врача",
+    )
+
 
 class Services(models.Model):
     """
@@ -79,13 +85,14 @@ class Services(models.Model):
         return self.name
 
 
-
 class Information(models.Model):
     """
     Модель для хранения контактной информации клиники.
     """
 
-    name = models.CharField(max_length=255, verbose_name="Название", blank=True, null=True)
+    name = models.CharField(
+        max_length=255, verbose_name="Название", blank=True, null=True
+    )
     info1 = models.CharField(
         max_length=1020, verbose_name="О нашей компании", blank=True, null=True
     )
@@ -107,8 +114,13 @@ class Information(models.Model):
     info7 = models.CharField(
         max_length=1020, verbose_name="Наши ценности", blank=True, null=True
     )
-    image_main = models.ImageField( max_length=555, upload_to="mvita_main/", blank=True, null=True,
-                                            verbose_name="Фото с главной страницы")
+    image_main = models.ImageField(
+        max_length=555,
+        upload_to="mvita_main/",
+        blank=True,
+        null=True,
+        verbose_name="Фото с главной страницы",
+    )
 
 
 class Record(models.Model):

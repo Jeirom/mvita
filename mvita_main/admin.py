@@ -1,12 +1,6 @@
-from .models import *
+from mvita_main.models import Doctors, Information
 
 from django.contrib import admin
-
-
-
-
-
-
 
 
 # # Направление в медицине
@@ -15,9 +9,6 @@ from django.contrib import admin
 #     list_display = ("id", "name", "description",)
 #     list_filter = ("name",)
 #     search_fields = ("name",)
-
-
-
 
 
 # # Доктора
@@ -40,16 +31,34 @@ from django.contrib import admin
 # Информация
 @admin.register(Information)
 class InformationAdmin(admin.ModelAdmin):
-    list_display = ("id", 'info1', 'info2', 'info3', 'info4', 'info5', 'info6', 'info7', 'image_main', )
+    list_display = (
+        "id",
+        "info1",
+        "info2",
+        "info3",
+        "info4",
+        "info5",
+        "info6",
+        "info7",
+        "image_main",
+    )
     # list_filter = ("address",)
     # search_fields = ("address",)
+
 
 # Доктор
 @admin.register(Doctors)
 class DoctorsAdmin(admin.ModelAdmin):
-    list_display = ("first_name", "last_name", "experience", "image", "specialization",  )
+    list_display = (
+        "first_name",
+        "last_name",
+        "experience",
+        "image",
+        "specialization",
+    )
     # list_filter = ("address",)
     # search_fields = ("address",)
+
 
 #
 # # Ценности

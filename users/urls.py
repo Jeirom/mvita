@@ -12,7 +12,8 @@ from users.views import (
     email_verification,
     CustomLogoutView,
     profile_view,
-    FeedbackCreateView, profile_edit,
+    FeedbackCreateView,
+    profile_edit,
 )
 
 
