@@ -121,6 +121,7 @@ class Information(models.Model):
         null=True,
         verbose_name="Фото с главной страницы",
     )
+    time_work = models.CharField(max_length=30, verbose_name='Время работы', blank=True, null=True)
 
 
 class Record(models.Model):

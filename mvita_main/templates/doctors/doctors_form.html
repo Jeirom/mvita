@@ -274,6 +274,28 @@ footer p {
   font-size: 0.9em;
   color: #555;
 }
+
+/* Стиль для бежевых кнопок */
+.btn-beige {
+  display: block;
+  width: 100%;
+  padding: 8px 16px;
+  margin: 4px 0;
+  background-color: #f5deb3; /* бежевый цвет */
+  color: #333; /* темный текст для читаемости */
+  border: none;
+  border-radius: 4px;
+  text-align: left;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-beige:hover {
+  background-color: #e6c3a3; /* чуть темнее при наведении */
+  transform: scale(1.02);
+}
+
 </style>
 </head>
 <body>
@@ -291,18 +313,24 @@ footer p {
           Пользователь
         </button>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userMenu">
-          <a href="{% url 'users:profile' %}">Профиль</a>
-          <a href="{% url 'users:login' %}">Войти</a>
-          <a href="{% url 'users:register' %}">Регистрация</a>
-          <a href="{% url 'mvita:diagnostic' %}">Мои результаты</a>
-          <a href="{% url 'mvita:record' %}">Мои записи</a>
-          <li><hr class="dropdown-divider"></li>
-          <a href="{% url 'users:logout' %}">Выход</a>
+          {% if user.is_authenticated %}
+            <!-- Если пользователь авторизован -->
+            <a href="{% url 'users:profile' %}" class="btn-beige">Профиль</a>
+            <a href="{% url 'mvita:diagnostic' %}" class="btn-beige">Мои результаты</a>
+            <a href="{% url 'mvita:record' %}" class="btn-beige">Мои записи</a>
+            <li><hr class="dropdown-divider"></li>
+            <a href="{% url 'users:logout' %}" class="btn-beige">Выход</a>
+          {% else %}
+            <!-- Если пользователь не авторизован -->
+            <a href="{% url 'users:login' %}" class="btn-beige">Войти</a>
+            <a href="{% url 'users:register' %}" class="btn-beige">Регистрация</a>
+          {% endif %}
         </ul>
       </div>
     </div>
   </div>
 </nav>
+
 
 <!-- Главный экран -->
 <header class="text-center py-5" style="background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); color: #fff;">
@@ -396,6 +424,7 @@ footer p {
     <p>{{ info.info2 }}</p>
     <p>{{ info.info3 }}</p>
     <p>{{ info.info4 }}</p>
+    <p>Время работы: {{ info.time_work }}</p>
     <a href="https://yandex.ru/map-widget/v1/?from=mapframe&ll=65.551147%2C57.142150&mode=whatshere&source=mapframe&utm_source=mapframe&whatshere%5Bpoint%5D=65.551352%2C57.142199&whatshere%5Bzoom%5D=16.27&z=16.27" target="_blank" class="btn btn-custom mt-3">Посмотреть на карте</a>
     <!-- Кнопка обратной связи -->
     <a href="/users/feedback/" target="_blank" class="btn btn-custom mt-3">Обратная связь</a>
